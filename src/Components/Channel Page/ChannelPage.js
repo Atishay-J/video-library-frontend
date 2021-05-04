@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useVideo } from "../../Context/VideoContext";
 import { useParams } from "react-router-dom";
 
 import VideoCard from "../Cards/VideoCard";
@@ -30,7 +29,16 @@ const ChannelPage = () => {
   return (
     <div className="channelPageContainer">
       <h1>Channel Page</h1>
-      {isLoading !== true && <h2>{curChannel.creatorName}</h2>}
+      {isLoading !== true && (
+        <div className="channelPageCover">
+          <img
+            src={curChannel.creatorAvatar}
+            className="channelPageAvatar"
+            alt="Channel Avatar"
+          />
+          <h2>{curChannel.creatorName}</h2>
+        </div>
+      )}
       <div>
         {isLoading ? (
           <h1>Loading...</h1>
