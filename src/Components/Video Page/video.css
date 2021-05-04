@@ -1,0 +1,9 @@
+.videoContainer {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+.videosWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

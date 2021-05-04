@@ -1,58 +1,31 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import "./video.css";
 import { useVideo } from "../../Context/VideoContext";
+
+import VideoCard from "../Cards/VideoCard";
 
 const Videos = () => {
   const { apiData } = useVideo();
 
   return (
-    <>
+    <div className="videoContainer">
       <h1>Video Page </h1>
 
-      <div>
-        <h1>Filtered video </h1>
-        {apiData.map((item) => (
-          <li>{item.creatorName}</li>
-        ))}
+      <div className="videosWrapper">
+        {apiData.map((channels) =>
+          channels.creatorVideos.map((item) => (
+            <VideoCard
+              videoId={item.videoId}
+              videoTitle={item.videoTitle}
+              videoDuration={item.videoDuration}
+              channelId={channels._id}
+              channelName={channels.creatorName}
+              channelAvatar={channels.creatorAvatar}
+            />
+          ))
+        )}
       </div>
-
-      <div>
-        <h1>Filtered video</h1>
-        {apiData.map((item) => (
-          <li>{item.creatorName}</li>
-        ))}
-      </div>
-      <div>
-        <h1>Filtered video</h1>
-        {apiData.map((item) => (
-          <li>{item.creatorName}</li>
-        ))}
-      </div>
-      <div>
-        <h1>Filtered video</h1>
-        {apiData.map((item) => (
-          <li>{item.creatorName}</li>
-        ))}
-      </div>
-      <div>
-        <h1>Filtered video</h1>
-        {apiData.map((item) => (
-          <li>{item.creatorName}</li>
-        ))}
-      </div>
-      <div>
-        <h1>Filtered video</h1>
-        {apiData.map((item) => (
-          <li>{item.creatorName}</li>
-        ))}
-      </div>
-      <div>
-        <h1>Filtered video</h1>
-        {apiData.map((item) => (
-          <li>{item.creatorName}</li>
-        ))}
-      </div>
-    </>
+    </div>
   );
 };
 

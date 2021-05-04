@@ -129,3 +129,4 @@ export const data = [
 ];
 
 // https://img.youtube.com/vi/TrdpK8dMsHY/0.jpg
+// https://img.youtube.com/vi/TrdpK8dMsHY/hq720.jpg
