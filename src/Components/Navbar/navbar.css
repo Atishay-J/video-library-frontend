@@ -1,0 +1,18 @@
+.navbarContainer {
+  background: rgb(139, 130, 130);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  z-index: 5;
+}
+.sidebarContainer {
+  background: rgb(136, 130, 130);
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  position: fixed;
+  bottom: 0;
+  z-index: 5;
+}
