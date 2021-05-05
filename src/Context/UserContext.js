@@ -1,13 +1,15 @@
-import { Switch } from "@material-ui/core";
-import axios from "axios";
 import { createContext, useContext, useReducer } from "react";
 import { useVideo } from "./VideoContext";
 
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
+  const wasUserLoggedIn = localStorage.getItem("isUserLoggedIn");
+
+  console.log("What this sayssss=====", wasUserLoggedIn);
+
   const initState = {
-    isUserLoggedIn: false,
+    isUserLoggedIn: wasUserLoggedIn !== null ? true : false,
     subscribedChannels: [],
     showLoginModal: false,
   };
@@ -18,6 +20,14 @@ export const UserProvider = ({ children }) => {
     console.log("Action", action);
 
     switch (action.type) {
+      case "SIGN_IN":
+        if (action.payload.status) {
+          localStorage.setItem("isUserLoggedIn", "true");
+          return { ...state, isUserLoggedIn: true };
+        }
+
+        return state;
+
       case "SUBSCRIBE_TOGGLE": {
         if (state.isUserLoggedIn) {
           return {

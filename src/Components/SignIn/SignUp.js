@@ -8,8 +8,6 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [displayMsg, setDisplayMsg] = useState(false);
 
-  console.log(" U and P", username, password);
-
   const signUp = async () => {
     await axios
       .post("http://localhost:8000/signup", { username, password })
@@ -28,8 +26,12 @@ const SignUp = () => {
 
       {displayMsg && (
         <div className="signUpMsgContainer">
-          <h3 className="singupMsg">Account succesfully created, Go to</h3>
-          <Link to="/signin">Login</Link>
+          <h3 className="signupMsg">
+            Account succesfully created, Go to{" "}
+            <span className="signupMsgLink">
+              <Link to="/signin">Login</Link>
+            </span>
+          </h3>
         </div>
       )}
 
