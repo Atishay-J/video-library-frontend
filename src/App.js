@@ -2,7 +2,14 @@ import "./App.css";
 
 import { Routes, Route } from "react-router-dom";
 
-import { Navbar, Playlist, Videos, Sidebar, ChannelPage } from "./Components";
+import {
+  Navbar,
+  Playlist,
+  Videos,
+  Sidebar,
+  ChannelPage,
+  VideoPlayer,
+} from "./Components";
 
 function App() {
   return (
@@ -13,6 +20,11 @@ function App() {
         <Route exact path="/navbar" element={<Navbar />} />
         <Route exact path="/playlist" element={<Playlist />} />
         <Route exact path="/channels/:channelId" element={<ChannelPage />} />
+        <Route
+          exact
+          path="/watch/:channelId/:videoId"
+          element={<VideoPlayer />}
+        />
       </Routes>
       <Sidebar />
     </div>

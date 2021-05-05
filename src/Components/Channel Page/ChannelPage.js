@@ -10,6 +10,10 @@ const ChannelPage = () => {
   const [curChannel, SetCurChannel] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
+  //**************************************** */
+  //******* TRY TO DO THIS IN CONTEXT ******/
+  //**************************************** */
+
   const getChannelData = async () => {
     await axios
       .get(`http://localhost:8000/api/channels/${channelId}`)
@@ -30,29 +34,38 @@ const ChannelPage = () => {
     <div className="channelPageContainer">
       <h1>Channel Page</h1>
       {isLoading !== true && (
-        <div className="channelPageCover">
-          <img
-            src={curChannel.creatorAvatar}
-            className="channelPageAvatar"
-            alt="Channel Avatar"
-          />
-          <h2>{curChannel.creatorName}</h2>
+        <div className="channelPageCoverContainer">
+          <div className="channelPageInfoWrapper">
+            <img
+              src={curChannel.creatorAvatar}
+              className="channelPageAvatar"
+              alt="Channel Avatar"
+            />
+            <h2>{curChannel.creatorName}</h2>
+          </div>
+          <div className="channelPageSubscribeWrapper">
+            <button className="channelPageSubscribeBtn">Subscribe</button>
+          </div>
         </div>
       )}
-      <div>
+
+      <div className="channelPageVideoContainer">
+        <h3 className="channelPageVideoHeading">Videos</h3>
         {isLoading ? (
           <h1>Loading...</h1>
         ) : (
-          curChannel.creatorVideos.map((video) => (
-            <VideoCard
-              videoId={video.videoId}
-              videoTitle={video.videoTitle}
-              videoDuration={video.videoDuration}
-              channelId={curChannel._id}
-              channelName={curChannel.creatorName}
-              channelAvatar={curChannel.creatorAvatar}
-            />
-          ))
+          <div className="channelPageVideosWrapper">
+            {curChannel.creatorVideos.map((video) => (
+              <VideoCard
+                videoId={video.videoId}
+                videoTitle={video.videoTitle}
+                videoDuration={video.videoDuration}
+                channelId={curChannel._id}
+                channelName={curChannel.creatorName}
+                channelAvatar={curChannel.creatorAvatar}
+              />
+            ))}
+          </div>
         )}
       </div>
     </div>

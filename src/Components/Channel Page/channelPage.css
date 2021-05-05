@@ -2,3 +2,25 @@
   padding-top: 4rem;
   padding-bottom: 4rem;
 }
+.channelPageVideosWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.channelPageCoverContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.channelPageVideoContainer {
+  text-align: left;
+  margin-top: 2rem;
+  border-top: 1px solid #dfddddad;
+  padding-top: 2rem;
+}
+
+.channelPageVideoHeading {
+  margin-left: 2rem;
+}
