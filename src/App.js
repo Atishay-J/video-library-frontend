@@ -9,6 +9,8 @@ import {
   Sidebar,
   ChannelPage,
   VideoPlayer,
+  SignIn,
+  SignUp,
 } from "./Components";
 
 function App() {
@@ -25,6 +27,9 @@ function App() {
           path="/watch/:channelId/:videoId"
           element={<VideoPlayer />}
         />
+        <Route exact path="/signin" element={<SignIn />} />
+
+        <Route exact path="/signup" element={<SignUp />} />
       </Routes>
       <Sidebar />
     </div>

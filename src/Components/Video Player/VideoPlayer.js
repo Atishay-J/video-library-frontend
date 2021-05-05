@@ -4,6 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import { useVideo } from "../../Context/VideoContext";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useUser } from "../../Context/UserContext";
 
 const VideoPlayer = () => {
   const { videoId, channelId } = useParams();
@@ -11,9 +12,13 @@ const VideoPlayer = () => {
   const [curVideo, setCurVideo] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
+  const { state, dispatch } = useUser();
+
   const addToWatchHistory = () => {
     console.log("Added to history");
   };
+
+  console.log("User State", state);
 
   //**************************************** */
   //******* TRY TO DO THIS IN CONTEXT ******/
@@ -69,7 +74,27 @@ const VideoPlayer = () => {
           </div>
           <div className="videoCardBtnContainer">
             <div className="subcribeButtonContainer">
-              <button>Subscribe</button>
+              <button
+                onClick={() =>
+                  dispatch({
+                    type: "SUBSCRIBE_TOGGLE",
+                    payload: { channelId: channelId },
+                  })
+                }
+              >
+                Subscribe
+              </button>
+              {state.showLoginModal && (
+                <div className="modal">
+                  I am modal Sign IN
+                  <Link
+                    to="/signin"
+                    onClick={() => dispatch({ type: "HIDE_LOGIN_MODAL" })}
+                  >
+                    Go...
+                  </Link>
+                </div>
+              )}
               <div className="addToButtonsWrapper">
                 <button>Add to playlist</button>
                 <button>Like</button>
