@@ -9,7 +9,7 @@ const LikedVideos = () => {
 
   return (
     <div className="playlistContainer container">
-      <h1 className="heading-l">Liked Videos</h1>
+      <h1 className="heading-l text-center">Liked Videos</h1>
       {state.isUserLoggedIn ? (
         <div className="likedVideosWrapper flex-cont space-around flex-wrap">
           {state.likedVideos.length > 0 ? (
@@ -28,7 +28,7 @@ const LikedVideos = () => {
           )}
         </div>
       ) : (
-        <h1 className="heading-m mt15">Log In to view</h1>
+        <h1 className="heading-m mt15 text-center">Log In to view</h1>
       )}
     </div>
   );
