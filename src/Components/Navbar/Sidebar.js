@@ -22,7 +22,7 @@ const Sidebar = () => {
         </Link>
       </div>
       <div className="sidebarLink">
-        <Link to="/subsciption">
+        <Link to="/subscribed">
           <SubscriptionsSharpIcon />
         </Link>
       </div>

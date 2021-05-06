@@ -6,6 +6,7 @@ import ChannelPage from "./Channel Page/ChannelPage";
 import VideoPlayer from "./Video Player/VideoPlayer";
 import SignIn from "./SignIn/SignIn";
 import SignUp from "./SignIn/SignUp";
+import Subscribed from "./Subscribed/subscribed";
 
 export {
   Navbar,
@@ -16,4 +17,5 @@ export {
   VideoPlayer,
   SignIn,
   SignUp,
+  Subscribed,
 };

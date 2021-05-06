@@ -11,6 +11,7 @@ import {
   VideoPlayer,
   SignIn,
   SignUp,
+  Subscribed,
 } from "./Components";
 
 function App() {
@@ -27,6 +28,8 @@ function App() {
           path="/watch/:channelId/:videoId"
           element={<VideoPlayer />}
         />
+
+        <Route exact path="/subscribed" element={<Subscribed />} />
         <Route exact path="/signin" element={<SignIn />} />
 
         <Route exact path="/signup" element={<SignUp />} />

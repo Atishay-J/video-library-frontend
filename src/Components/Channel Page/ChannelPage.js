@@ -4,11 +4,13 @@ import { useParams } from "react-router-dom";
 import VideoCard from "../Cards/VideoCard";
 import "./channelPage.css";
 import axios from "axios";
+import { useUser } from "../../Context/UserContext";
 
 const ChannelPage = () => {
   const { channelId } = useParams();
   const [curChannel, SetCurChannel] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const { state, dispatch } = useUser();
 
   //**************************************** */
   //******* TRY TO DO THIS IN CONTEXT ******/
@@ -44,7 +46,21 @@ const ChannelPage = () => {
             <h2>{curChannel.creatorName}</h2>
           </div>
           <div className="channelPageSubscribeWrapper">
-            <button className="channelPageSubscribeBtn">Subscribe</button>
+            <button
+              className="channelPageSubscribeBtn"
+              onClick={() =>
+                dispatch({
+                  type: "SUBSCRIBE_TOGGLE",
+                  payload: { channelId },
+                })
+              }
+            >
+              {state.subscribedChannels.find(
+                (channel) => channel.channelId === channelId
+              )
+                ? "Unsubscribe"
+                : "Subscribe"}
+            </button>
           </div>
         </div>
       )}

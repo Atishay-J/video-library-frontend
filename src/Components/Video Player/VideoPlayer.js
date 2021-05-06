@@ -78,11 +78,19 @@ const VideoPlayer = () => {
                 onClick={() =>
                   dispatch({
                     type: "SUBSCRIBE_TOGGLE",
-                    payload: { channelId: channelId },
+                    payload: {
+                      channelId,
+                      creatorAvatar: curChannel.creatorAvatar,
+                      creatorName: curChannel.creatorName,
+                    },
                   })
                 }
               >
-                Subscribe
+                {state.subscribedChannels.find(
+                  (channel) => channel.channelId === channelId
+                )
+                  ? "Unsubscribe"
+                  : "Subscribe"}
               </button>
               {state.showLoginModal && (
                 <div className="modal">
@@ -96,8 +104,37 @@ const VideoPlayer = () => {
                 </div>
               )}
               <div className="addToButtonsWrapper">
-                <button>Add to playlist</button>
-                <button>Like</button>
+                <button
+                  onClick={() =>
+                    dispatch({
+                      type: "PLAYLIST_TOGGLE",
+                      payload: {
+                        videoId,
+                        channelId,
+                        creatorAvatar: curChannel.creatorAvatar,
+                        creatorName: curChannel.creatorName,
+                        videoTitle: curVideo.videoTitle,
+                        videoDuration: curVideo.videoDuration,
+                      },
+                    })
+                  }
+                >
+                  {state.playlists.find((video) => video.videoId === videoId)
+                    ? "Remove from playlist"
+                    : "Add to playlist"}
+                </button>
+                <button
+                  onClick={() =>
+                    dispatch({
+                      type: "LIKE_TOGGLE",
+                      payload: { videoId },
+                    })
+                  }
+                >
+                  {state.likedVideos.find((video) => video === videoId)
+                    ? "Dislike"
+                    : "Like"}
+                </button>
               </div>
             </div>
           </div>
