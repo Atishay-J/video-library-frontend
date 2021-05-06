@@ -16,14 +16,21 @@ const Playlist = () => {
       {state.isUserLoggedIn ? (
         <div className="playlistsWrapper">
           {state.playlists.map((item) => (
-            <VideoCard
-              videoId={item.videoId}
-              videoTitle={item.videoTitle}
-              videoDuration={item.videoDuration}
-              channelId={item.channelId}
-              channelName={item.creatorName}
-              channelAvatar={item.creatorAvatar}
-            />
+            <div className="playlistVideoContainer">
+              <h1>{item.playlistName}</h1>
+              <div className="playlistVideoWrapper">
+                {item.videos.map((video) => (
+                  <VideoCard
+                    videoId={video.videoId}
+                    videoTitle={video.videoTitle}
+                    videoDuration={video.videoDuration}
+                    channelId={video.channelId}
+                    channelName={video.creatorName}
+                    channelAvatar={video.creatorAvatar}
+                  />
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       ) : (

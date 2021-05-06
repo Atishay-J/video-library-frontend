@@ -5,6 +5,9 @@ import { useVideo } from "../../Context/VideoContext";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useUser } from "../../Context/UserContext";
+import PlaylistToggle from "./PlaylistToggle";
+import SubscribeToggle from "./SubscribeButton";
+import LikeToggle from "./LikeButton";
 
 const VideoPlayer = () => {
   const { videoId, channelId } = useParams();
@@ -13,6 +16,8 @@ const VideoPlayer = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const { state, dispatch } = useUser();
+
+  const { apiData } = useVideo();
 
   const addToWatchHistory = () => {
     console.log("Added to history");
@@ -38,9 +43,6 @@ const VideoPlayer = () => {
         console.log("Error while loading channel data", err);
       });
   };
-
-  console.log("Videeeeoo Id", videoId);
-  console.log("Currenntt video", curVideo);
 
   useEffect(() => {
     getChannelData();
@@ -73,77 +75,31 @@ const VideoPlayer = () => {
             </Link>
           </div>
           <div className="videoCardBtnContainer">
-            <div className="subcribeButtonContainer">
-              <button
-                onClick={() =>
-                  dispatch({
-                    type: "SUBSCRIBE_TOGGLE",
-                    payload: {
-                      channelId,
-                      creatorAvatar: curChannel.creatorAvatar,
-                      creatorName: curChannel.creatorName,
-                    },
-                  })
-                }
-              >
-                {state.subscribedChannels.find(
-                  (channel) => channel.channelId === channelId
-                )
-                  ? "Unsubscribe"
-                  : "Subscribe"}
-              </button>
-              {state.showLoginModal && (
-                <div className="modal">
-                  I am modal Sign IN
-                  <Link
-                    to="/signin"
-                    onClick={() => dispatch({ type: "HIDE_LOGIN_MODAL" })}
-                  >
-                    Go...
-                  </Link>
-                </div>
-              )}
-              <div className="addToButtonsWrapper">
-                <button
-                  onClick={() =>
-                    dispatch({
-                      type: "PLAYLIST_TOGGLE",
-                      payload: {
-                        videoId,
-                        channelId,
-                        creatorAvatar: curChannel.creatorAvatar,
-                        creatorName: curChannel.creatorName,
-                        videoTitle: curVideo.videoTitle,
-                        videoDuration: curVideo.videoDuration,
-                      },
-                    })
-                  }
+            <SubscribeToggle channelId={channelId} curChannel={curChannel} />
+
+            <PlaylistToggle
+              videoId={videoId}
+              channelId={channelId}
+              curChannel={curChannel}
+              curVideo={curVideo}
+            />
+            <LikeToggle
+              videoId={videoId}
+              channelId={channelId}
+              curChannel={curChannel}
+              curVideo={curVideo}
+            />
+            {state.showLoginModal && (
+              <div className="modal">
+                I am modal Sign IN
+                <Link
+                  to="/signin"
+                  onClick={() => dispatch({ type: "HIDE_LOGIN_MODAL" })}
                 >
-                  {state.playlists.find((video) => video.videoId === videoId)
-                    ? "Remove from playlist"
-                    : "Add to playlist"}
-                </button>
-                <button
-                  onClick={() =>
-                    dispatch({
-                      type: "LIKE_TOGGLE",
-                      payload: {
-                        videoId,
-                        channelId,
-                        creatorAvatar: curChannel.creatorAvatar,
-                        creatorName: curChannel.creatorName,
-                        videoTitle: curVideo.videoTitle,
-                        videoDuration: curVideo.videoDuration,
-                      },
-                    })
-                  }
-                >
-                  {state.likedVideos.find((video) => video.videoId === videoId)
-                    ? "Dislike"
-                    : "Like"}
-                </button>
+                  Go...
+                </Link>
               </div>
-            </div>
+            )}
           </div>
         </div>
       )}
