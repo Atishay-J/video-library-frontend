@@ -23,8 +23,6 @@ const VideoPlayer = () => {
     console.log("Added to history");
   };
 
-  console.log("User State", state);
-
   //**************************************** */
   //******* TRY TO DO THIS IN CONTEXT ******/
   //**************************************** */
