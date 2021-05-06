@@ -31,7 +31,7 @@ const VideoPlayer = () => {
 
   const getChannelData = async () => {
     await axios
-      .get(`http://localhost:8000/api/channels/${channelId}`)
+      .get(`https://metaphor-music.herokuapp.com/api/channels/${channelId}`)
       .then((res) => {
         SetCurChannel(res.data);
         setCurVideo(
