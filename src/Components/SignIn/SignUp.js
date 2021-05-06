@@ -20,7 +20,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="signupContainer container ">
+    <div className="signupContainer container flex-column align-center">
       <h1 className="heading-l">Signup</h1>
 
       {displayMsg && (

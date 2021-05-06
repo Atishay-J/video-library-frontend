@@ -25,6 +25,9 @@ const videoReducer = (state, action) => {
 
     case "HIDE_PLAYLIST_MODAL":
       return { ...state, showPlaylistModal: false };
+
+    case "SET_LOADING":
+      return { ...state, isLoading: action.payload };
   }
 };
 
@@ -34,8 +37,9 @@ export const VideoProvider = ({ children }) => {
   const [videoState, videoDispatch] = useReducer(videoReducer, initState);
 
   useEffect(() => {
-    axios.get("http://localhost:8000/api/videos").then((res) => {
+    axios.get("https://metaphor-music.herokuapp.com/api/videos").then((res) => {
       setApiData(res.data);
+      videoDispatch({ type: "SET_LOADING", payload: false });
     });
   }, []);
 

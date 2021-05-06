@@ -64,6 +64,11 @@
   text-decoration: none;
   cursor: pointer;
 }
+.playlistModalData {
+  display: flex;
+  justify-content: center;
+}
+
 .likeToggleBtn {
   border: none;
 }

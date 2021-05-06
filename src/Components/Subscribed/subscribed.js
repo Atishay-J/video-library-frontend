@@ -10,7 +10,7 @@ const Subscribed = () => {
   console.log("STate from SUbscirbe", state);
 
   return (
-    <div className="playlistContainer container">
+    <div className="playlistContainer container ">
       <h1 className="heading-l">subscribed Channels</h1>
 
       {state.isUserLoggedIn ? (

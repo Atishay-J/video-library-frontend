@@ -9,16 +9,16 @@ const Playlist = () => {
   const { state } = useUser();
 
   return (
-    <div className="playlistContainer container">
+    <div className="playlistContainer container ">
       <h1 className="heading-l">Playlists</h1>
 
       {state.isUserLoggedIn ? (
-        <div className="playlistsWrapper flex-cont space-around flex-wrap">
+        <div className="playlistsWrapper ">
           {state.playlists.length > 0 ? (
             state.playlists.map((item) => (
               <div className="playlistVideoContainer">
                 <h1 className="heading-m text-left ">{item.playlistName}</h1>
-                <div className="playlistVideoWrapper">
+                <div className="playlistVideoWrapper flex-cont space-around flex-wrap">
                   {item.videos.map((video) => (
                     <VideoCard
                       videoId={video.videoId}

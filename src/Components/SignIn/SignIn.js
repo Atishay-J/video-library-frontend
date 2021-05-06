@@ -37,7 +37,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="SignInContainer container">
+    <div className="SignInContainer container flex-column align-center">
       <h1 className="heading-l">SignIn</h1>
 
       {console.log("Stateee", state)}
