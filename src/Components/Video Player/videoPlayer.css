@@ -30,6 +30,16 @@
   justify-content: space-around;
   margin-top: 0.7rem;
 }
+.signinModal {
+  position: absolute;
+  margin-top: 3rem;
+  background: rgb(250, 249, 249);
+  width: 6rem;
+  font-size: 0.8rem;
+  box-shadow: 2px 2px 18px -4px rgba(0, 0, 0, 0.199);
+  padding: 0.4rem;
+  line-height: 1.2rem;
+}
 .playlistModal {
   display: block;
   position: fixed;

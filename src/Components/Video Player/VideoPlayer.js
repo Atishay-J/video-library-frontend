@@ -95,14 +95,19 @@ const VideoPlayer = () => {
                 curVideo={curVideo}
               />
               {state.showLoginModal && (
-                <div className="modal">
-                  I am modal Sign IN
+                <div className="signinModal">
+                  Please{" "}
                   <Link
                     to="/signin"
                     onClick={() => dispatch({ type: "HIDE_LOGIN_MODAL" })}
                   >
-                    Go...
+                    <span
+                      style={{ textDecoration: "underline", cursor: "pointer" }}
+                    >
+                      SignIn
+                    </span>{" "}
                   </Link>
+                  to continue
                 </div>
               )}
             </div>
