@@ -59,7 +59,9 @@ const VideoPlayer = () => {
           onPlay={addToWatchHistory}
         />
       </div>
-      {isLoading !== true && (
+      {isLoading ? (
+        <h1>Loading...</h1>
+      ) : (
         <div className="videoCardInfoContainer">
           <Link to={`/channels/${channelId}`}>
             <img
