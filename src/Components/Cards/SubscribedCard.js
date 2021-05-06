@@ -8,13 +8,14 @@ const SubscribedCard = ({ channelAvatar, channelName, channelId }) => {
 
   return (
     <div className="subscribedCardContainer mt15">
-      <div className="subscirbeChannelInfo">
-        <h3 className="subscribedChannelName">{channelName}</h3>
+      <div className="subscribedChannelInfo">
         <img
-          className="subsribedChannelAvatar"
+          className="subscribedChannelAvatar"
           src={channelAvatar}
           alt="Channel Avatar"
         />
+
+        <h3 className="subscribedChannelName">{channelName}</h3>
       </div>
       <button
         className="subscribeCardBtn"

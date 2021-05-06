@@ -11,7 +11,7 @@ const Subscribed = () => {
 
   return (
     <div className="playlistContainer container ">
-      <h1 className="heading-l">subscribed Channels</h1>
+      <h1 className="heading-l text-center">subscribed Channels</h1>
 
       {state.isUserLoggedIn ? (
         <div className="subscribedWrapper flex-cont space-around flex-wrap">

@@ -7,3 +7,20 @@
   font-size: 0.8rem;
   margin-top: 0.8rem;
 }
+.subscribedChannelInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.subscribedCardContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.subscribedChannelAvatar {
+  background: #000;
+  display: block;
+}
