@@ -19,23 +19,25 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <Routes>
-        <Route exact path="/" element={<Videos />} />
-        <Route exact path="/navbar" element={<Navbar />} />
-        <Route exact path="/playlist" element={<Playlist />} />
-        <Route exact path="/channels/:channelId" element={<ChannelPage />} />
-        <Route
-          exact
-          path="/watch/:channelId/:videoId"
-          element={<VideoPlayer />}
-        />
+      <div className="routesDiv">
+        <Routes>
+          <Route exact path="/" element={<Videos />} />
+          <Route exact path="/navbar" element={<Navbar />} />
+          <Route exact path="/playlist" element={<Playlist />} />
+          <Route exact path="/channels/:channelId" element={<ChannelPage />} />
+          <Route
+            exact
+            path="/watch/:channelId/:videoId"
+            element={<VideoPlayer />}
+          />
 
-        <Route exact path="/subscribed" element={<Subscribed />} />
-        <Route exact path="/liked" element={<LikedVideos />} />
-        <Route exact path="/signin" element={<SignIn />} />
+          <Route exact path="/subscribed" element={<Subscribed />} />
+          <Route exact path="/liked" element={<LikedVideos />} />
+          <Route exact path="/signin" element={<SignIn />} />
 
-        <Route exact path="/signup" element={<SignUp />} />
-      </Routes>
+          <Route exact path="/signup" element={<SignUp />} />
+        </Routes>
+      </div>
       <Sidebar />
     </div>
   );

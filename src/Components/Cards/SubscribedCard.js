@@ -1,12 +1,13 @@
 import React from "react";
 
 import { useUser } from "../../Context/UserContext";
+import "./subscribedCard.css";
 
 const SubscribedCard = ({ channelAvatar, channelName, channelId }) => {
   const { state, dispatch } = useUser();
 
   return (
-    <div className="subscribedCardContainer">
+    <div className="subscribedCardContainer mt15">
       <div className="subscirbeChannelInfo">
         <h3 className="subscribedChannelName">{channelName}</h3>
         <img
@@ -16,6 +17,7 @@ const SubscribedCard = ({ channelAvatar, channelName, channelId }) => {
         />
       </div>
       <button
+        className="subscribeCardBtn"
         onClick={() =>
           dispatch({
             type: "SUBSCRIBE_TOGGLE",

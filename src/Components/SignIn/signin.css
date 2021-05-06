@@ -1,0 +1,14 @@
+.signInForm {
+  align-items: center;
+}
+.submitBtn {
+  border: none;
+  cursor: pointer;
+  height: 1.5rem;
+  width: 4.5rem;
+  color: var(--colWhite);
+  margin-top: 1rem;
+}
+.formLink {
+  text-decoration: underline;
+}

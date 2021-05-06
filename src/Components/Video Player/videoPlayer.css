@@ -2,6 +2,12 @@
   padding-top: 4rem;
   padding-bottom: 4rem;
 }
+.videoPlayerFrameWrapper {
+  width: 100%;
+}
+.videoPlayer {
+  width: 90%;
+}
 .videoPlayerInfoContainer {
   display: flex;
   justify-content: space-between;
@@ -19,29 +25,32 @@
 .videoPlayerChannelName {
   margin-left: 1rem;
 }
+.toggleBtnWrapper {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 0.7rem;
+}
 .playlistModal {
-  display: block; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: block;
+  position: fixed;
+  z-index: 1;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
-/* Modal Content/Box */
 .playlistModalContent {
   background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
+  margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  width: 80%;
 }
 
-/* The Close Button */
 .playlistModalClose {
   color: #aaa;
   float: right;
@@ -54,4 +63,26 @@
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+.likeToggleBtn {
+  border: none;
+}
+.like {
+  color: var(--colDarkGray);
+}
+.dislike {
+  color: var(--colBlue);
+}
+.addToPlaylistBtn {
+  border: none;
+  color: var(--colDarkGray);
+}
+.subscribeBtn {
+  border: none;
+  width: 4.3rem;
+  background: var(--colRed);
+  height: 1.4rem;
+  color: var(--colWhite);
+  font-size: 0.75rem;
+  border-radius: 20px;
 }

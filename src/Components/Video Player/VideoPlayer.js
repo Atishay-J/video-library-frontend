@@ -50,10 +50,14 @@ const VideoPlayer = () => {
 
   return (
     <div className="videoPlayerContainer">
-      <h1>Video Player</h1>
+      {/* <h1>Video Player</h1> */}
 
       <div className="videoPlayerFrameWrapper">
-        <YouTube videoId={videoId} onPlay={addToWatchHistory} />
+        <YouTube
+          className="videoPlayer"
+          videoId={videoId}
+          onPlay={addToWatchHistory}
+        />
       </div>
       {isLoading !== true && (
         <div className="videoCardInfoContainer">
@@ -77,29 +81,31 @@ const VideoPlayer = () => {
           <div className="videoCardBtnContainer">
             <SubscribeToggle channelId={channelId} curChannel={curChannel} />
 
-            <PlaylistToggle
-              videoId={videoId}
-              channelId={channelId}
-              curChannel={curChannel}
-              curVideo={curVideo}
-            />
-            <LikeToggle
-              videoId={videoId}
-              channelId={channelId}
-              curChannel={curChannel}
-              curVideo={curVideo}
-            />
-            {state.showLoginModal && (
-              <div className="modal">
-                I am modal Sign IN
-                <Link
-                  to="/signin"
-                  onClick={() => dispatch({ type: "HIDE_LOGIN_MODAL" })}
-                >
-                  Go...
-                </Link>
-              </div>
-            )}
+            <div className="toggleBtnWrapper">
+              <PlaylistToggle
+                videoId={videoId}
+                channelId={channelId}
+                curChannel={curChannel}
+                curVideo={curVideo}
+              />
+              <LikeToggle
+                videoId={videoId}
+                channelId={channelId}
+                curChannel={curChannel}
+                curVideo={curVideo}
+              />
+              {state.showLoginModal && (
+                <div className="modal">
+                  I am modal Sign IN
+                  <Link
+                    to="/signin"
+                    onClick={() => dispatch({ type: "HIDE_LOGIN_MODAL" })}
+                  >
+                    Go...
+                  </Link>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       )}

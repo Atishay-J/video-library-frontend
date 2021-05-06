@@ -20,14 +20,14 @@ const PlaylistModal = ({ videoId, channelId, curChannel, curVideo }) => {
         <div className="playlistModalData">
           <div className="playlistModalInputWrapper">
             <input
+              className="playlistModalInput simpleText-input"
               type="text"
               placeholder="Playlist Name"
               value={playlistInput}
-              className="playlistModalInput"
               onChange={(e) => setPlaylistInput(e.target.value)}
             />
             <button
-              className="playlistModalSubmitBtn"
+              className="playlistModalSubmitBtn primary submitBtn"
               onClick={() => {
                 dispatch({
                   type: "ADD_TO_PLAYLIST",

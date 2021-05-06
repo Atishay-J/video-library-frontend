@@ -2,6 +2,7 @@ import React from "react";
 
 import { useUser } from "../../Context/UserContext";
 import SubscribedCard from "../Cards/SubscribedCard";
+import "./subscribed.css";
 
 const Subscribed = () => {
   const { state } = useUser();
@@ -9,13 +10,11 @@ const Subscribed = () => {
   console.log("STate from SUbscirbe", state);
 
   return (
-    <div className="playlistContainer">
-      <h1>subscribed</h1>
-      <h1>subscribed</h1>
-      <h1>subscribed</h1>
-      <h1>subscribed</h1>
+    <div className="playlistContainer container">
+      <h1 className="heading-l">subscribed Channels</h1>
+
       {state.isUserLoggedIn ? (
-        <div className="subscribedWrapper">
+        <div className="subscribedWrapper flex-cont space-around flex-wrap">
           {state.subscribedChannels.length > 0 ? (
             state.subscribedChannels.map((item) => (
               <SubscribedCard
@@ -25,11 +24,11 @@ const Subscribed = () => {
               />
             ))
           ) : (
-            <h1>No videos</h1>
+            <h1 className="heading-m mt15">No Subscriptions</h1>
           )}
         </div>
       ) : (
-        <h1>Log In to view</h1>
+        <h1 className="heading-m mt15">Log In to view</h1>
       )}
     </div>
   );

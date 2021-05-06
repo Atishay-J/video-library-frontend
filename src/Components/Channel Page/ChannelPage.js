@@ -35,16 +35,16 @@ const ChannelPage = () => {
 
   return (
     <div className="channelPageContainer">
-      <h1>Channel Page</h1>
+      {/* <h1 className="heading-s ">Channel Page</h1> */}
       {isLoading !== true && (
-        <div className="channelPageCoverContainer">
+        <div className="channelPageCoverContainer mt10">
           <div className="channelPageInfoWrapper">
             <img
               src={curChannel.creatorAvatar}
               className="channelPageAvatar"
               alt="Channel Avatar"
             />
-            <h2>{curChannel.creatorName}</h2>
+            <h2 className="heading-m">{curChannel.creatorName}</h2>
           </div>
           <div className="channelPageSubscribeWrapper">
             <SubscribeToggle channelId={channelId} curChannel={curChannel} />
@@ -53,7 +53,7 @@ const ChannelPage = () => {
       )}
 
       <div className="channelPageVideoContainer">
-        <h3 className="channelPageVideoHeading">Videos</h3>
+        <h3 className="channelPageVideoHeading heading-s">Videos</h3>
         {isLoading ? (
           <h1>Loading...</h1>
         ) : (

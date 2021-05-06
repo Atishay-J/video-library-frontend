@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useUser } from "../../Context/UserContext";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
+import "./signin.css";
 
 const SignIn = () => {
   const [username, SetUserName] = useState("");
@@ -36,34 +37,47 @@ const SignIn = () => {
   };
 
   return (
-    <div className="SignInContainer">
-      <h1>SignIn Page</h1>
-      <h1>SignIn Page</h1>
-      <h1>SignIn Page</h1>
-      <h1>SignIn Page</h1>
+    <div className="SignInContainer container">
+      <h1 className="heading-l">SignIn</h1>
 
       {console.log("Stateee", state)}
 
       {displayMsg && <h3>Wrong Username or password</h3>}
 
-      <form action="#" onSubmit={(e) => e.preventDefault()}>
+      <form
+        className="flex-column signInForm mt15"
+        action="#"
+        onSubmit={(e) => e.preventDefault()}
+      >
+        <div className="inputsWrapper flex-cont">
+          <input
+            className="simpleText-input"
+            type="text"
+            placeholder="username"
+            value={username}
+            onChange={(e) => SetUserName(e.target.value)}
+          />
+          <input
+            className="simpleText-input"
+            type="password"
+            placeholder="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
         <input
-          type="text"
-          placeholder="username"
-          value={username}
-          onChange={(e) => SetUserName(e.target.value)}
+          className="primary submitBtn"
+          type="submit"
+          value="SignIn"
+          onClick={signIn}
         />
-        <input
-          type="password"
-          placeholder="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <input type="submit" value="SignIn" onClick={signIn} />
       </form>
 
-      <p className="signInPara">
-        Don't have an accout? <Link to="/signup">SignUp</Link>
+      <p className="signInPara mt10">
+        Don't have an accout?{" "}
+        <Link to="/signup">
+          <span className="formLink"> SignUp</span>
+        </Link>
       </p>
     </div>
   );

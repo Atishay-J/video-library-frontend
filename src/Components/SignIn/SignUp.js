@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useUser } from "../../Context/UserContext";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import "./signin.css";
 
 const SignUp = () => {
   const [username, SetUserName] = useState("");
@@ -19,10 +20,8 @@ const SignUp = () => {
   };
 
   return (
-    <div classname="signupContainer">
-      <h1>Signup</h1>
-      <h1>Signup</h1>
-      <h1>Signup</h1>
+    <div className="signupContainer container ">
+      <h1 className="heading-l">Signup</h1>
 
       {displayMsg && (
         <div className="signUpMsgContainer">
@@ -35,20 +34,33 @@ const SignUp = () => {
         </div>
       )}
 
-      <form action="#" onSubmit={(e) => e.preventDefault()}>
+      <form
+        action="#"
+        className="flex-column signInForm mt15"
+        onSubmit={(e) => e.preventDefault()}
+      >
+        <div className="inputsWrapper flex-cont">
+          <input
+            className="simpleText-input"
+            type="text"
+            placeholder="username"
+            value={username}
+            onChange={(e) => SetUserName(e.target.value)}
+          />
+          <input
+            className="simpleText-input"
+            type="password"
+            placeholder="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
         <input
-          type="text"
-          placeholder="username"
-          value={username}
-          onChange={(e) => SetUserName(e.target.value)}
+          className="primary submitBtn"
+          type="submit"
+          value="Signup"
+          onClick={signUp}
         />
-        <input
-          type="password"
-          placeholder="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <input type="submit" value="Signup" onClick={signUp} />
       </form>
     </div>
   );

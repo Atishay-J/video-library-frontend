@@ -9,9 +9,9 @@ const Videos = () => {
 
   return (
     <div className="videoContainer">
-      <h1>Video Page </h1>
+      {/* <h1 className="heading-l">All Videos </h1> */}
 
-      <div className="videosWrapper">
+      <div className="videosWrapper flex-cont space-around flex-wrap">
         {apiData.map((channels) =>
           channels.creatorVideos.map((item) => (
             <VideoCard

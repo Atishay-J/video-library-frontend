@@ -5,6 +5,7 @@ const SubscribeToggle = ({ channelId, curChannel }) => {
   return (
     <div className="subscribeToggleContainer">
       <button
+        className="subscribeBtn"
         onClick={() =>
           dispatch({
             type: "SUBSCRIBE_TOGGLE",

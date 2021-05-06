@@ -8,13 +8,10 @@ const LikedVideos = () => {
   const { state } = useUser();
 
   return (
-    <div className="playlistContainer">
-      <h1>likedVideos</h1>
-      <h1>likedVideos</h1>
-      <h1>likedVideos</h1>
-      <h1>likedVideos</h1>
+    <div className="playlistContainer container">
+      <h1 className="heading-l">Liked Videos</h1>
       {state.isUserLoggedIn ? (
-        <div className="likedVideosWrapper">
+        <div className="likedVideosWrapper flex-cont space-around flex-wrap">
           {state.likedVideos.length > 0 ? (
             state.likedVideos.map((item) => (
               <VideoCard
@@ -27,11 +24,11 @@ const LikedVideos = () => {
               />
             ))
           ) : (
-            <h1>No videos</h1>
+            <h1 className="heading-m mt15">No Liked videos</h1>
           )}
         </div>
       ) : (
-        <h1>Log In to view</h1>
+        <h1 className="heading-m mt15">Log In to view</h1>
       )}
     </div>
   );
