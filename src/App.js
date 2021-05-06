@@ -12,6 +12,7 @@ import {
   SignIn,
   SignUp,
   Subscribed,
+  LikedVideos,
 } from "./Components";
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
         />
 
         <Route exact path="/subscribed" element={<Subscribed />} />
+        <Route exact path="/liked" element={<LikedVideos />} />
         <Route exact path="/signin" element={<SignIn />} />
 
         <Route exact path="/signup" element={<SignUp />} />

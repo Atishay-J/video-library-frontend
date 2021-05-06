@@ -116,19 +116,34 @@ export const UserProvider = ({ children }) => {
 
       case "LIKE_TOGGLE": {
         let videoId = action.payload.videoId;
+        let channelId = action.payload.channelId;
+        let creatorAvatar = action.payload.creatorAvatar;
+        let creatorName = action.payload.creatorName;
+        let videoTitle = action.payload.videoTitle;
+        let videoDuration = action.payload.videoDuration;
 
         if (state.isUserLoggedIn) {
-          if (state.likedVideos.find((video) => video === videoId)) {
+          if (state.likedVideos.find((video) => video.videoId === videoId)) {
             return {
               ...state,
-              likedVideos: [
-                state.likedVideos.filter((video) => video !== videoId),
-              ],
+              likedVideos: state.likedVideos.filter(
+                (video) => video.videoId !== videoId
+              ),
             };
           }
           return {
             ...state,
-            likedVideos: [...state.likedVideos, videoId],
+            likedVideos: [
+              ...state.likedVideos,
+              {
+                videoId,
+                channelId,
+                creatorAvatar,
+                creatorName,
+                videoDuration,
+                videoTitle,
+              },
+            ],
           };
         }
         return { ...state, showLoginModal: true };

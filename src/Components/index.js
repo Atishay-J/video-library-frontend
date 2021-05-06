@@ -7,6 +7,7 @@ import VideoPlayer from "./Video Player/VideoPlayer";
 import SignIn from "./SignIn/SignIn";
 import SignUp from "./SignIn/SignUp";
 import Subscribed from "./Subscribed/subscribed";
+import LikedVideos from "./Liked/LikedVideos";
 
 export {
   Navbar,
@@ -18,4 +19,5 @@ export {
   SignIn,
   SignUp,
   Subscribed,
+  LikedVideos,
 };

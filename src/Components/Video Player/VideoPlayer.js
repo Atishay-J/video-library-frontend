@@ -127,11 +127,18 @@ const VideoPlayer = () => {
                   onClick={() =>
                     dispatch({
                       type: "LIKE_TOGGLE",
-                      payload: { videoId },
+                      payload: {
+                        videoId,
+                        channelId,
+                        creatorAvatar: curChannel.creatorAvatar,
+                        creatorName: curChannel.creatorName,
+                        videoTitle: curVideo.videoTitle,
+                        videoDuration: curVideo.videoDuration,
+                      },
                     })
                   }
                 >
-                  {state.likedVideos.find((video) => video === videoId)
+                  {state.likedVideos.find((video) => video.videoId === videoId)
                     ? "Dislike"
                     : "Like"}
                 </button>
