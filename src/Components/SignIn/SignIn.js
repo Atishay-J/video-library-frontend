@@ -40,8 +40,6 @@ const SignIn = () => {
     <div className="SignInContainer container flex-column align-center">
       <h1 className="heading-l">SignIn</h1>
 
-      {console.log("Stateee", state)}
-
       {displayMsg && <h3>Wrong Username or password</h3>}
 
       <form

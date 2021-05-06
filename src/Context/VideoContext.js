@@ -15,10 +15,8 @@ const initState = {
 };
 
 const videoReducer = (state, action) => {
-  console.log("REducer acalllelffsfd", state);
   switch (action.type) {
     case "SHOW_PLAYLIST_MODAL":
-      console.log("Gottt theee switttchcccch");
       return { ...state, showPlaylistModal: true };
     default:
       return state;

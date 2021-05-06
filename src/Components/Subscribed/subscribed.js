@@ -7,8 +7,6 @@ import "./subscribed.css";
 const Subscribed = () => {
   const { state } = useUser();
 
-  console.log("STate from SUbscirbe", state);
-
   return (
     <div className="playlistContainer container ">
       <h1 className="heading-l text-center">subscribed Channels</h1>
