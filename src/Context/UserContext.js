@@ -43,6 +43,10 @@ export const UserProvider = ({ children }) => {
 
         return state;
 
+      case "SIGN_OUT":
+        localStorage.removeItem("isUserLoggedIn");
+        return { ...state, isUserLoggedIn: false };
+
       case "SUBSCRIBE_TOGGLE": {
         let channelId = action.payload.channelId;
         let creatorAvatar = action.payload.creatorAvatar;
@@ -73,46 +77,6 @@ export const UserProvider = ({ children }) => {
         return { ...state, showLoginModal: true };
       }
 
-      // case "PLAYLIST_TOGGLE": {
-      //   let videoId = action.payload.videoId;
-      //   let channelId = action.payload.channelId;
-      //   let creatorAvatar = action.payload.creatorAvatar;
-      //   let creatorName = action.payload.creatorName;
-      //   let videoTitle = action.payload.videoTitle;
-      //   let videoDuration = action.payload.videoDuration;
-      //   let playlistName = action.payload.playlistName;
-
-      //   if (state.isUserLoggedIn) {
-      //     if (
-      //       state.playlists.find(
-      //         (playlist) => playlist.playlistName === videoId
-      //       )
-      //     ) {
-      //       return {
-      //         ...state,
-      //         playlists: [
-      //           state.playlists.filter((video) => video.videoId !== videoId),
-      //         ],
-      //       };
-      //     }
-      //     return {
-      //       ...state,
-      //       playlists: [
-      //         ...state.playlists,
-      //         {
-      //           videoId,
-      //           channelId,
-      //           creatorAvatar,
-      //           creatorName,
-      //           videoDuration,
-      //           videoTitle,
-      //         },
-      //       ],
-      //     };
-      //   }
-      //   return { ...state, showLoginModal: true };
-      // }
-
       case "ADD_TO_PLAYLIST": {
         let videoId = action.payload.videoId;
         let channelId = action.payload.channelId;
@@ -126,13 +90,17 @@ export const UserProvider = ({ children }) => {
           let availablePlaylist = state.playlists.find(
             (playlist) => playlist.playlistName === action.payload.playlistName
           );
-          let filteredPlaylist = state.playlists.filter(
-            (playlist) => playlist.playlistName !== playlistName
-          );
 
-          if (availablePlaylist) {
+          console.log("AVaaauull", availablePlaylist);
+
+          // console.log("out SI IDE ", availablePlaylist.playlistName);
+
+          if (
+            availablePlaylist !== undefined &&
+            availablePlaylist.playlistName === action.payload.playlistName
+          ) {
             console.log("======================= \n ===================");
-
+            console.log("IN SI IDE ", availablePlaylist.playlistName);
             availablePlaylist.videos.push({
               videoId,
               channelId,
@@ -144,7 +112,7 @@ export const UserProvider = ({ children }) => {
 
             return state;
           }
-          console.log("================= O U T S I D E \n ===================");
+          console.log("================= O U T S I D E  ===================");
           return {
             ...state,
             playlists: [

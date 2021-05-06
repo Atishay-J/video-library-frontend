@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useUser } from "../../Context/UserContext";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const SignIn = () => {
   const [username, SetUserName] = useState("");
@@ -61,6 +61,10 @@ const SignIn = () => {
         />
         <input type="submit" value="SignIn" onClick={signIn} />
       </form>
+
+      <p className="signInPara">
+        Don't have an accout? <Link to="/signup">SignUp</Link>
+      </p>
     </div>
   );
 };

@@ -3,7 +3,12 @@ import "./navbar.css";
 import AccountCircleSharpIcon from "@material-ui/icons/AccountCircleSharp";
 import SearchSharpIcon from "@material-ui/icons/SearchSharp";
 
+import { useUser } from "../../Context/UserContext";
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
+  const { state, dispatch } = useUser();
+
   return (
     <div className="navbarContainer">
       <div className="navbarLogoWrapper">
@@ -18,8 +23,15 @@ const Navbar = () => {
         </label>
       </div>
       <div className="navbarUserWrapper">
-        <div className="navbarUserImageContainer">
-          <AccountCircleSharpIcon />
+        <div className="navbarLoginButtonContainer">
+          <button
+            className="NavbarLoginBtn"
+            onClick={() =>
+              state.isUserLoggedIn && dispatch({ type: "SIGN_OUT" })
+            }
+          >
+            {state.isUserLoggedIn ? "Logout" : <Link to="/signin">Login</Link>}
+          </button>
         </div>
       </div>
     </div>

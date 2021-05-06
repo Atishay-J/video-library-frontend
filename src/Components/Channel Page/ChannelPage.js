@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import VideoCard from "../Cards/VideoCard";
+import SubscribeToggle from "../Video Player/SubscribeButton";
 import "./channelPage.css";
 import axios from "axios";
 import { useUser } from "../../Context/UserContext";
@@ -46,21 +47,7 @@ const ChannelPage = () => {
             <h2>{curChannel.creatorName}</h2>
           </div>
           <div className="channelPageSubscribeWrapper">
-            <button
-              className="channelPageSubscribeBtn"
-              onClick={() =>
-                dispatch({
-                  type: "SUBSCRIBE_TOGGLE",
-                  payload: { channelId },
-                })
-              }
-            >
-              {state.subscribedChannels.find(
-                (channel) => channel.channelId === channelId
-              )
-                ? "Unsubscribe"
-                : "Subscribe"}
-            </button>
+            <SubscribeToggle channelId={channelId} curChannel={curChannel} />
           </div>
         </div>
       )}
