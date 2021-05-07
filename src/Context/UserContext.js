@@ -43,6 +43,9 @@ export const UserProvider = ({ children }) => {
 
       case "SIGN_OUT":
         localStorage.removeItem("isUserLoggedIn");
+        localStorage.removeItem("subscribed");
+        localStorage.removeItem("history");
+        localStorage.removeItem("playlist");
         return { ...state, isUserLoggedIn: false };
 
       case "SUBSCRIBE_TOGGLE": {
