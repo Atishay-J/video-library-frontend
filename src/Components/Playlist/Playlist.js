@@ -19,9 +19,9 @@ const Playlist = () => {
               <div className="playlistVideoContainer" key={index}>
                 <h1 className="heading-m text-left ">{item.playlistName}</h1>
                 <div className="playlistVideoWrapper flex-cont space-around flex-wrap">
-                  {item.videos.map((video) => (
+                  {item.videos.map((video, index) => (
                     <VideoCard
-                      key={video.videoId}
+                      key={index}
                       videoId={video.videoId}
                       videoTitle={video.videoTitle}
                       videoDuration={video.videoDuration}
