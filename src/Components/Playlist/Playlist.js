@@ -15,8 +15,8 @@ const Playlist = () => {
       {state.isUserLoggedIn ? (
         <div className="playlistsWrapper ">
           {state.playlists.length > 0 ? (
-            state.playlists.map((item) => (
-              <div className="playlistVideoContainer">
+            state.playlists.map((item, index) => (
+              <div className="playlistVideoContainer" key={index}>
                 <h1 className="heading-m text-left ">{item.playlistName}</h1>
                 <div className="playlistVideoWrapper flex-cont space-around flex-wrap">
                   {item.videos.map((video) => (
