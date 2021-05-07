@@ -32,7 +32,8 @@
 }
 .signinModal {
   position: absolute;
-  margin-top: 3rem;
+  margin-top: 1.5rem;
+  right: 1rem;
   background: rgb(250, 249, 249);
   width: 6rem;
   font-size: 0.8rem;
