@@ -15,8 +15,6 @@ export const UserProvider = ({ children }) => {
   };
 
   const userReducer = (state, action) => {
-    console.log("Action", action);
-
     switch (action.type) {
       case "SIGN_IN":
         if (action.payload.status) {

@@ -18,6 +18,7 @@ const Videos = () => {
           apiData.map((channels) =>
             channels.creatorVideos.map((item) => (
               <VideoCard
+                key={item.videoId}
                 videoId={item.videoId}
                 videoTitle={item.videoTitle}
                 videoDuration={item.videoDuration}

@@ -1,15 +1,26 @@
 .videoPlayerContainer {
   padding-top: 4rem;
   padding-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .videoPlayerFrameWrapper {
-  width: 100%;
+  width: 90%;
 }
 .videoPlayer {
+  width: 100%;
+}
+.videoCardInfoContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   width: 90%;
 }
 .videoPlayerInfoContainer {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
 }
