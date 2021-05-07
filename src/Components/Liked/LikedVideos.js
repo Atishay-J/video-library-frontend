@@ -15,6 +15,7 @@ const LikedVideos = () => {
           {state.likedVideos.length > 0 ? (
             state.likedVideos.map((item) => (
               <VideoCard
+                key={item.videoId}
                 videoId={item.videoId}
                 videoTitle={item.videoTitle}
                 videoDuration={item.videoDuration}

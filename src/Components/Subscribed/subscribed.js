@@ -16,6 +16,7 @@ const Subscribed = () => {
           {state.subscribedChannels.length > 0 ? (
             state.subscribedChannels.map((item) => (
               <SubscribedCard
+                key={item.channelId}
                 channelAvatar={item.creatorAvatar}
                 channelName={item.creatorName}
                 channelId={item.channelId}

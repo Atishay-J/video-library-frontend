@@ -21,6 +21,7 @@ const Playlist = () => {
                 <div className="playlistVideoWrapper flex-cont space-around flex-wrap">
                   {item.videos.map((video) => (
                     <VideoCard
+                      key={video.videoId}
                       videoId={video.videoId}
                       videoTitle={video.videoTitle}
                       videoDuration={video.videoDuration}
