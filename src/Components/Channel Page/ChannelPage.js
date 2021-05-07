@@ -6,6 +6,7 @@ import SubscribeToggle from "../Video Player/SubscribeButton";
 import "./channelPage.css";
 import axios from "axios";
 import { useUser } from "../../Context/UserContext";
+import { Link } from "react-router-dom";
 
 const ChannelPage = () => {
   const { channelId } = useParams();
@@ -49,6 +50,22 @@ const ChannelPage = () => {
           <div className="channelPageSubscribeWrapper">
             <SubscribeToggle channelId={channelId} curChannel={curChannel} />
           </div>
+          {state.showLoginModal && (
+            <div className="signinModal channelPageModal">
+              Please{" "}
+              <Link
+                to="/signin"
+                onClick={() => dispatch({ type: "HIDE_LOGIN_MODAL" })}
+              >
+                <span
+                  style={{ textDecoration: "underline", cursor: "pointer" }}
+                >
+                  SignIn
+                </span>{" "}
+              </Link>
+              to continue
+            </div>
+          )}
         </div>
       )}
 

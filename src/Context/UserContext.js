@@ -91,16 +91,10 @@ export const UserProvider = ({ children }) => {
             (playlist) => playlist.playlistName === action.payload.playlistName
           );
 
-          console.log("AVaaauull", availablePlaylist);
-
-          // console.log("out SI IDE ", availablePlaylist.playlistName);
-
           if (
             availablePlaylist !== undefined &&
             availablePlaylist.playlistName === action.payload.playlistName
           ) {
-            console.log("======================= \n ===================");
-            console.log("IN SI IDE ", availablePlaylist.playlistName);
             availablePlaylist.videos.push({
               videoId,
               channelId,
@@ -112,7 +106,7 @@ export const UserProvider = ({ children }) => {
 
             return state;
           }
-          console.log("================= O U T S I D E  ===================");
+
           return {
             ...state,
             playlists: [
@@ -133,7 +127,7 @@ export const UserProvider = ({ children }) => {
             ],
           };
         }
-        return state;
+        return { ...state, showLoginModal: true };
       }
 
       case "LIKE_TOGGLE": {
