@@ -2,6 +2,7 @@ import React from "react";
 
 import { useUser } from "../../Context/UserContext";
 import "./subscribedCard.css";
+import { Link } from "react-router-dom";
 
 const SubscribedCard = ({ channelAvatar, channelName, channelId }) => {
   const { state, dispatch } = useUser();
@@ -9,13 +10,17 @@ const SubscribedCard = ({ channelAvatar, channelName, channelId }) => {
   return (
     <div className="subscribedCardContainer mt15">
       <div className="subscribedChannelInfo">
-        <img
-          className="subscribedChannelAvatar"
-          src={channelAvatar}
-          alt="Channel Avatar"
-        />
+        <Link to={`/channels/${channelId}`}>
+          <img
+            className="subscribedChannelAvatar"
+            src={channelAvatar}
+            alt="Channel Avatar"
+          />
+        </Link>
 
-        <h3 className="subscribedChannelName">{channelName}</h3>
+        <Link to={`/channels/${channelId}`}>
+          <h3 className="subscribedChannelName">{channelName}</h3>
+        </Link>
       </div>
       <button
         className="subscribeCardBtn"
