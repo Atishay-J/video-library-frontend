@@ -106,10 +106,12 @@
 }
 .subscribeBtn {
   border: none;
-  width: 4.3rem;
+  /* width: 4.3rem; */
   background: var(--colRed);
   height: 1.4rem;
   color: var(--colWhite);
   font-size: 0.75rem;
   border-radius: 20px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
