@@ -8,6 +8,8 @@ import SignIn from "./SignIn/SignIn";
 import SignUp from "./SignIn/SignUp";
 import Subscribed from "./Subscribed/subscribed";
 import LikedVideos from "./Liked/LikedVideos";
+import LoadingCard from "./Cards/LoadingCard";
+import VideoCard from "./Cards/VideoCard";
 
 export {
   Navbar,
@@ -20,4 +22,6 @@ export {
   SignUp,
   Subscribed,
   LikedVideos,
+  LoadingCard,
+  VideoCard,
 };

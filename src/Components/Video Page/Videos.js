@@ -2,7 +2,7 @@ import React from "react";
 import "./video.css";
 import { useVideo } from "../../Context/VideoContext";
 
-import VideoCard from "../Cards/VideoCard";
+import { VideoCard, LoadingCard } from "../index";
 
 const Videos = () => {
   const { apiData, videoState } = useVideo();
@@ -13,7 +13,13 @@ const Videos = () => {
 
       <div className="videosWrapper flex-cont space-around flex-wrap">
         {videoState.isLoading ? (
-          <h2>Loading...</h2>
+          <>
+            {Array(9)
+              .fill()
+              .map((item, index) => (
+                <LoadingCard key={index} />
+              ))}
+          </>
         ) : (
           apiData.map((channels) =>
             channels.creatorVideos.map((item) => (
