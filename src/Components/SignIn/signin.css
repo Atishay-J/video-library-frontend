@@ -12,3 +12,15 @@
 .formLink {
   text-decoration: underline;
 }
+.signInPara {
+  font-size: 0.85rem;
+}
+.signUpMsgContainer {
+  margin-top: 1rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--font-black);
+}
+.signupMsgLink {
+  text-decoration: underline;
+}
