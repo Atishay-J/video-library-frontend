@@ -1,4 +1,4 @@
-import "./videoCard.css";
+import "../Cards/videoCard.css";
 import Skeleton from "react-loading-skeleton";
 
 const LoadingCard = ({ key }) => {

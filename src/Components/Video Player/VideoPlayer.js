@@ -8,6 +8,7 @@ import { useUser } from "../../Context/UserContext";
 import PlaylistToggle from "./PlaylistToggle";
 import SubscribeToggle from "./SubscribeButton";
 import LikeToggle from "./LikeButton";
+import { VideoPlayerLoader } from "../index";
 
 const VideoPlayer = () => {
   const { videoId, channelId } = useParams();
@@ -58,7 +59,7 @@ const VideoPlayer = () => {
         />
       </div>
       {isLoading ? (
-        <h1>Loading...</h1>
+        <VideoPlayerLoader />
       ) : (
         <div className="videoCardInfoContainer">
           <Link to={`/channels/${channelId}`}>

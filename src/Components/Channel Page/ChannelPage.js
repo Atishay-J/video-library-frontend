@@ -95,6 +95,7 @@ const ChannelPage = () => {
           <div className="channelPageVideosWrapper">
             {curChannel.creatorVideos.map((video) => (
               <VideoCard
+                key={video.videoId}
                 videoId={video.videoId}
                 videoTitle={video.videoTitle}
                 videoDuration={video.videoDuration}
