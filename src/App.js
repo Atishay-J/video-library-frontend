@@ -14,6 +14,7 @@ import {
   Subscribed,
   LikedVideos,
 } from "./Components";
+import PageNotFound from "./Components/404/PageNotFound";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route exact path="/signin" element={<SignIn />} />
 
           <Route exact path="/signup" element={<SignUp />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </div>
       <Sidebar />
