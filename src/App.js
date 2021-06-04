@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import {
   Navbar,
   Playlist,
+  Playlists,
   Videos,
   Sidebar,
   ChannelPage,
@@ -24,7 +25,8 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Videos />} />
           <Route exact path="/navbar" element={<Navbar />} />
-          <Route exact path="/playlist" element={<Playlist />} />
+          <Route exact path="/playlists" element={<Playlists />} />
+          <Route exact path="/playlist/:playlistName" element={<Playlist />} />
           <Route exact path="/channels/:channelId" element={<ChannelPage />} />
           <Route
             exact

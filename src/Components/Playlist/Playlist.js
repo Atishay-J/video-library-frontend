@@ -1,47 +1,32 @@
 import React from "react";
-
 import { useUser } from "../../Context/UserContext";
-
-import VideoCard from "../Cards/VideoCard";
+import { VideoCard } from "../index";
+import { useParams } from "react-router-dom";
 import "./playlist.css";
 
-const Playlist = () => {
+function Playlist() {
   const { state } = useUser();
+  const { playlistName } = useParams();
 
   return (
-    <div className="playlistContainer container ">
-      <h1 className="heading-l text-center">Playlists</h1>
-
-      {state.isUserLoggedIn ? (
-        <div className="playlistsWrapper ">
-          {state.playlists.length > 0 ? (
-            state.playlists.map((item, index) => (
-              <div className="playlistVideoContainer" key={index}>
-                <h1 className="heading-m text-left ">{item.playlistName}</h1>
-                <div className="playlistVideoWrapper flex-cont space-around flex-wrap">
-                  {item.videos.map((video, index) => (
-                    <VideoCard
-                      key={index}
-                      videoId={video.videoId}
-                      videoTitle={video.videoTitle}
-                      videoDuration={video.videoDuration}
-                      channelId={video.channelId}
-                      channelName={video.creatorName}
-                      channelAvatar={video.creatorAvatar}
-                    />
-                  ))}
-                </div>
-              </div>
-            ))
-          ) : (
-            <h1 className="heading-m mt15">No Playlists</h1>
-          )}
-        </div>
-      ) : (
-        <h1 className="heading-m mt15 text-center">Log In to view</h1>
-      )}
+    <div className="playlistVideos container">
+      <h1 className="playlistnameHeading">{playlistName}</h1>
+      <div className="playlistVideosWrapper">
+        {state.playlists
+          .find((playlists) => playlists.playlistName === playlistName)
+          .videos.map((video, index) => (
+            <VideoCard
+              key={index}
+              videoId={video.videoId}
+              videoTitle={video.videoTitle}
+              videoDuration={video.videoDuration}
+              channelId={video.channelId}
+              channelName={video.creatorName}
+              channelAvatar={video.creatorAvatar}
+            />
+          ))}
+      </div>
     </div>
   );
-};
-
+}
 export default Playlist;

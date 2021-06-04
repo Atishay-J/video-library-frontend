@@ -5,7 +5,11 @@ function PageNotFound() {
     <div className="pageNotFoundContainer container">
       <h1 className="text-center errorHeading">Seems you are lost</h1>
       <div className="errorStatusWrapper">
-        <ErrorOutlineIcon className="errorIcon" />
+        <ErrorOutlineIcon
+          classes={{
+            root: "errorIcon",
+          }}
+        />
         <h3 className="text-center mt15 errorStatusCode">404</h3>
       </div>
     </div>

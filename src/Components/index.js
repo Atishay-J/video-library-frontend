@@ -1,5 +1,6 @@
 import Navbar from "./Navbar/Navbar";
 import Playlist from "./Playlist/Playlist";
+import Playlists from "./Playlist/Playlists";
 import Videos from "./Video Page/Videos";
 import Sidebar from "./Navbar/Sidebar";
 import ChannelPage from "./Channel Page/ChannelPage";
@@ -15,6 +16,7 @@ import VideoCard from "./Cards/VideoCard";
 export {
   Navbar,
   Playlist,
+  Playlists,
   Videos,
   Sidebar,
   ChannelPage,

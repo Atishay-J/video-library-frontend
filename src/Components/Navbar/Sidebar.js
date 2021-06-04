@@ -18,7 +18,7 @@ const Sidebar = () => {
         className="navItem"
         activeClassName="selectedNavItem"
         end
-        to="/playlist"
+        to="/playlists"
       >
         <PlaylistAddCheckSharpIcon />
       </NavLink>
