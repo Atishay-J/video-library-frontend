@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useUser } from "../../Context/UserContext";
+import { toast } from "react-toastify";
 
 const PlaylistModal = ({
   videoId,
@@ -9,7 +10,6 @@ const PlaylistModal = ({
   setShowPlaylistModal,
 }) => {
   const { dispatch } = useUser();
-
   const [playlistInput, setPlaylistInput] = useState("");
 
   const addToPlaylist = () => {
@@ -26,6 +26,8 @@ const PlaylistModal = ({
           playlistName: playlistInput,
         },
       });
+
+    toast.dark(`Added to ${playlistInput}`, { position: "bottom-right" });
 
     setShowPlaylistModal(false);
   };

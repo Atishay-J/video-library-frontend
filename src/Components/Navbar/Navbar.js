@@ -2,10 +2,11 @@ import React from "react";
 import "./navbar.css";
 
 import { useUser } from "../../Context/UserContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const { state, dispatch } = useUser();
+  const navigate = useNavigate();
 
   return (
     <div className="navbarContainer">
@@ -15,9 +16,13 @@ const Navbar = () => {
 
       <button
         className="navbarLoginBtn primary btn-pill"
-        onClick={() => state.isUserLoggedIn && dispatch({ type: "SIGN_OUT" })}
+        onClick={() =>
+          state.isUserLoggedIn
+            ? dispatch({ type: "SIGN_OUT" })
+            : navigate("/signin")
+        }
       >
-        {state.isUserLoggedIn ? "Logout" : <Link to="/signin">Login</Link>}
+        {state.isUserLoggedIn ? "Logout" : "Login"}
       </button>
     </div>
   );

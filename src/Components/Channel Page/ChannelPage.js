@@ -15,10 +15,6 @@ const ChannelPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { state, dispatch } = useUser();
 
-  //**************************************** */
-  //******* TRY TO DO THIS IN CONTEXT ******/
-  //**************************************** */
-
   const getChannelData = async () => {
     await axios
       .get(`https://metaphor-music.herokuapp.com/api/channels/${channelId}`)
@@ -37,49 +33,43 @@ const ChannelPage = () => {
 
   return (
     <div className="channelPageContainer">
-      {/* <h1 className="heading-s ">Channel Page</h1> */}
-      {/* {isLoading !== true && ( */}
-      {
-        <div className="channelPageCoverContainer mt10">
-          <div className="channelPageInfoWrapper">
-            {curChannel.creatorAvatar ? (
-              <img
-                src={curChannel.creatorAvatar}
-                className="channelPageAvatar"
-                alt="Channel Avatar"
-              />
-            ) : (
-              <Skeleton width={"5rem"} height={"5rem"} />
-            )}
-            <h2 className="heading-m">
-              {curChannel.creatorName ? (
-                curChannel.creatorName
-              ) : (
-                <Skeleton width={"6rem"} />
-              )}
-            </h2>
-          </div>
-          <div className="channelPageSubscribeWrapper">
-            <SubscribeToggle channelId={channelId} curChannel={curChannel} />
-          </div>
-          {state.showLoginModal && (
-            <div className="signinModal channelPageModal">
-              Please{" "}
-              <Link
-                to="/signin"
-                onClick={() => dispatch({ type: "HIDE_LOGIN_MODAL" })}
-              >
-                <span
-                  style={{ textDecoration: "underline", cursor: "pointer" }}
-                >
-                  SignIn
-                </span>{" "}
-              </Link>
-              to continue
-            </div>
+      <div className="channelPageCoverContainer mt10">
+        <div className="channelPageInfoWrapper">
+          {curChannel.creatorAvatar ? (
+            <img
+              src={curChannel.creatorAvatar}
+              className="channelPageAvatar"
+              alt="Channel Avatar"
+            />
+          ) : (
+            <Skeleton width={"5rem"} height={"5rem"} />
           )}
+          <h2 className="heading-m">
+            {curChannel.creatorName ? (
+              curChannel.creatorName
+            ) : (
+              <Skeleton width={"6rem"} />
+            )}
+          </h2>
         </div>
-      }
+        <div className="channelPageSubscribeWrapper">
+          <SubscribeToggle channelId={channelId} curChannel={curChannel} />
+        </div>
+        {state.showLoginModal && (
+          <div className="signinModal channelPageModal">
+            Please{" "}
+            <Link
+              to="/signin"
+              onClick={() => dispatch({ type: "HIDE_LOGIN_MODAL" })}
+            >
+              <span style={{ textDecoration: "underline", cursor: "pointer" }}>
+                SignIn
+              </span>{" "}
+            </Link>
+            to continue
+          </div>
+        )}
+      </div>
 
       <div className="channelPageVideoContainer">
         <h3 className="channelPageVideoHeading heading-s">Videos</h3>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "./signin.css";
 
@@ -68,6 +68,12 @@ const SignUp = () => {
           onClick={signUp}
         />
       </form>
+      <p className="signInPara mt10">
+        Already have an account?
+        <Link to="/signin">
+          <span className="formLink"> Signin</span>
+        </Link>
+      </p>
     </div>
   );
 };

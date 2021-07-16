@@ -91,7 +91,7 @@ const VideoPlayer = () => {
                 curChannel={curChannel}
                 curVideo={curVideo}
               />
-              {state.showLoginModal && (
+              {/* {state.showLoginModal && (
                 <div className="signinModal">
                   Please{" "}
                   <Link
@@ -106,7 +106,7 @@ const VideoPlayer = () => {
                   </Link>
                   to continue
                 </div>
-              )}
+              )} */}
             </div>
           </div>
         </div>
