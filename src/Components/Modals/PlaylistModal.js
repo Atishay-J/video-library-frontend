@@ -16,15 +16,7 @@ const PlaylistModal = ({
     playlistInput !== "" &&
       dispatch({
         type: "ADD_TO_PLAYLIST",
-        payload: {
-          videoId,
-          channelId,
-          creatorAvatar: curChannel.creatorAvatar,
-          creatorName: curChannel.creatorName,
-          videoTitle: curVideo.videoTitle,
-          videoDuration: curVideo.videoDuration,
-          playlistName: playlistInput,
-        },
+        payload: { videoId, playlistname: playlistInput },
       });
 
     toast.dark(`Added to ${playlistInput}`, { position: "bottom-right" });

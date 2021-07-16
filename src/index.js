@@ -7,14 +7,14 @@ import { VideoProvider } from "./Context/VideoContext";
 import { UserProvider } from "./Context/UserContext";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <UserProvider>
-      <VideoProvider>
-        <Router>
-          <App />
-        </Router>
-      </VideoProvider>
-    </UserProvider>
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <UserProvider>
+    <VideoProvider>
+      <Router>
+        <App />
+      </Router>
+    </VideoProvider>
+  </UserProvider>,
+  // </React.StrictMode>,
   document.getElementById("root")
 );

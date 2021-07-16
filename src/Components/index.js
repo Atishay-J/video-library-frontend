@@ -12,6 +12,7 @@ import LikedVideos from "./Liked/LikedVideos";
 import LoadingCard from "./Loaders/LoadingCard";
 import VideoPlayerLoader from "./Loaders/VideoPlayerLoader";
 import VideoCard from "./Cards/VideoCard";
+import PlaylistVideoCard from "./Cards/playlistVideoCard";
 
 export {
   Navbar,
@@ -28,4 +29,5 @@ export {
   LoadingCard,
   VideoPlayerLoader,
   VideoCard,
+  PlaylistVideoCard,
 };

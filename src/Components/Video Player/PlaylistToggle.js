@@ -1,6 +1,6 @@
 import PlaylistModal from "../Modals/PlaylistModal";
 import PlaylistAddSharpIcon from "@material-ui/icons/PlaylistAddSharp";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useUser } from "../../Context/UserContext";
 import { toast } from "react-toastify";
 
@@ -8,6 +8,10 @@ const PlaylistToggle = ({ videoId, channelId, curChannel, curVideo }) => {
   const [showPlaylistModal, setShowPlaylistModal] = useState(false);
 
   const { state } = useUser();
+
+  useEffect(() => {
+    console.log("PLaylist s", state);
+  }, [state]);
 
   const addToPlaylist = () => {
     if (state.isUserLoggedIn) {

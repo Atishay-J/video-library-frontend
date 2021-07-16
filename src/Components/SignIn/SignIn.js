@@ -14,17 +14,15 @@ const SignIn = () => {
 
   const signIn = async () => {
     await axios
-      .post("https://metaphor-music.herokuapp.com/login", {
+      // .post("https://metaphor-music.herokuapp.com/signin"
+      .post("http://localhost:8000/signin", {
         username,
         password,
       })
       .then((res) => {
         dispatch({
           type: "SIGN_IN",
-          payload: {
-            userData: res.data,
-            status: res.status,
-          },
+          payload: res.data,
         });
         navigate("/");
       })

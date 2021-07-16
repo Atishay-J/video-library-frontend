@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useUser } from "../../Context/UserContext";
-import { VideoCard } from "../index";
+import { VideoCard, PlaylistVideoCard } from "../index";
 import { useParams, useNavigate } from "react-router-dom";
 import "./playlist.css";
 import { useVideo } from "../../Context/VideoContext";
@@ -13,7 +13,7 @@ function Playlist() {
 
   useEffect(() => {
     if (
-      state.playlists.find(
+      state.userData.playlists.find(
         (playlists) => playlists.playlistName === playlistName
       ) === undefined
     ) {
@@ -25,19 +25,18 @@ function Playlist() {
     <div className="playlistVideos container">
       <h1 className="playlistnameHeading">{playlistName}</h1>
       <div className="playlistVideosWrapper">
-        {state.playlists
+        {state.userData.playlists
           .find((playlists) => playlists.playlistName === playlistName)
           ?.videos.map((video, index) => (
-            <VideoCard
-              key={index}
-              videoId={video.videoId}
-              videoTitle={video.videoTitle}
-              videoDuration={video.videoDuration}
-              channelId={video.channelId}
-              channelName={video.creatorName}
-              channelAvatar={video.creatorAvatar}
-            />
+            <PlaylistVideoCard video={video} />
           ))}
+
+        {/* {console.log(
+          "Is it ",
+          state.userData.playlists.find(
+            (playlists) => playlists.playlistName === playlistName
+          )
+        )} */}
       </div>
     </div>
   );

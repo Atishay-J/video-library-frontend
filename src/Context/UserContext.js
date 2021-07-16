@@ -3,66 +3,59 @@ import { createContext, useContext, useReducer } from "react";
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const wasUserLoggedIn = localStorage.getItem("isUserLoggedIn");
+  const wasUserLoggedIn = localStorage.getItem("token");
 
   const initState = {
     isUserLoggedIn: wasUserLoggedIn !== null ? true : false,
-    subscribedChannels: [],
-    likedVideos: [],
-    playlists: [],
+    userData: {
+      userId: "",
+      username: "",
+      subscribedChannels: [],
+      likedVideos: [],
+      playlists: [],
+    },
     showLoginModal: false,
   };
 
   const userReducer = (state, action) => {
-    console.log(
-      "============= \n Dispatch Called has action \n =========",
-      action
-    );
-
     switch (action.type) {
-      case "SIGN_IN":
-        if (action.payload.status) {
-          localStorage.setItem("isUserLoggedIn", "true");
+      case "SIGN_IN": {
+        localStorage.setItem("token", action.payload.token);
 
-          localStorage.setItem(
-            "likedVideos",
-            JSON.stringify(action.payload.userData.likedVideos)
-          );
-          localStorage.setItem(
-            "subscribed",
-            JSON.stringify(action.payload.userData.subscribed)
-          );
-          localStorage.setItem(
-            "history",
-            JSON.stringify(action.payload.userData.history)
-          );
-          localStorage.setItem(
-            "playlist",
-            JSON.stringify(action.payload.userData.playlist)
-          );
-          return { ...state, isUserLoggedIn: true };
-        }
+        let userData = {
+          userId: action.payload.userId,
+          username: action.payload.username,
+          subscribedChannels: [...action.payload.subscribed],
+          likedVideos: [...action.payload.likedVideos],
+          playlists: [...action.payload.playlist],
+        };
 
-        return state;
+        return { userData, isUserLoggedIn: true };
+      }
 
-      case "SIGN_OUT":
-        localStorage.removeItem("isUserLoggedIn");
-        localStorage.removeItem("subscribed");
-        localStorage.removeItem("history");
-        localStorage.removeItem("playlist");
-        return { ...state, isUserLoggedIn: false };
+      case "SIGN_OUT": {
+        localStorage.removeItem("token");
+
+        let userData = {
+          userId: "",
+          username: "",
+          subscribedChannels: [],
+          likedVideos: [],
+          playlists: [],
+        };
+
+        return { userData, isUserLoggedIn: false };
+      }
 
       case "SUBSCRIBE_TOGGLE": {
         let channelId = action.payload.channelId;
         let creatorAvatar = action.payload.creatorAvatar;
         let creatorName = action.payload.creatorName;
 
-        console.log("============= \n  Subscribe Called \n =========");
-
         if (state.isUserLoggedIn) {
           if (
-            state.subscribedChannels &&
-            state.subscribedChannels.find(
+            state.userData.subscribedChannels &&
+            state.userData.subscribedChannels.find(
               (channel) => channel.channelId === channelId
             )
           ) {
@@ -75,75 +68,116 @@ export const UserProvider = ({ children }) => {
           }
           return {
             ...state,
-            subscribedChannels: [
-              ...state.subscribedChannels,
-              { channelId, creatorName, creatorAvatar },
-            ],
+            userData: {
+              ...state.userData,
+              subscribedChannels: [
+                ...state.subscribedChannels,
+                { channelId, creatorName, creatorAvatar },
+              ],
+            },
           };
         }
         return { ...state, showLoginModal: true };
       }
 
       case "ADD_TO_PLAYLIST": {
-        let videoId = action.payload.videoId;
-        let channelId = action.payload.channelId;
-        let creatorAvatar = action.payload.creatorAvatar;
-        let creatorName = action.payload.creatorName;
-        let videoTitle = action.payload.videoTitle;
-        let videoDuration = action.payload.videoDuration;
-        let playlistName = action.payload.playlistName;
+        let isPlaylistExist = state.userData.playlists.find(
+          ({ playlistName }) => playlistName === action.payload.playlistname
+        );
 
-        if (state.isUserLoggedIn) {
-          let availablePlaylist = state.playlists.find(
-            (playlist) => playlist.playlistName === action.payload.playlistName
+        if (isPlaylistExist) {
+          let copyPlaylist = JSON.parse(JSON.stringify(isPlaylistExist));
+
+          copyPlaylist.videos.push(action.payload.videoId);
+
+          let remainingPlaylists = state.userData.playlists.filter(
+            ({ playlistName }) => playlistName !== action.payload.playlistname
           );
 
-          if (
-            availablePlaylist !== undefined &&
-            availablePlaylist.playlistName === action.payload.playlistName
-          ) {
-            availablePlaylist.videos.push({
-              videoId,
-              channelId,
-              creatorAvatar,
-              creatorName,
-              videoTitle,
-              videoDuration,
-            });
-
-            return state;
-          }
+          console.log("Raming playlist", remainingPlaylists);
 
           return {
             ...state,
-            playlists: [
-              ...state.playlists,
-              {
-                playlistName,
-                videos: [
-                  {
-                    videoId,
-                    channelId,
-                    creatorAvatar,
-                    creatorName,
-                    videoTitle,
-                    videoDuration,
-                  },
-                ],
-              },
-            ],
+            userData: {
+              ...state.userData,
+              playlists: [copyPlaylist, ...remainingPlaylists],
+            },
           };
         }
-        return { ...state, showLoginModal: true };
+
+        return {
+          ...state,
+          userData: {
+            ...state.userData,
+            playlists: [
+              {
+                playlistName: action.payload.playlistname,
+                videos: [action.payload.videoId],
+              },
+              ...state.userData.playlists,
+            ],
+          },
+        };
+
+        // let videoId = action.payload.videoId;
+        // let channelId = action.payload.channelId;
+        // let creatorAvatar = action.payload.creatorAvatar;
+        // let creatorName = action.payload.creatorName;
+        // let videoTitle = action.payload.videoTitle;
+        // let videoDuration = action.payload.videoDuration;
+        // let playlistName = action.payload.playlistName;
+
+        // if (state.isUserLoggedIn) {
+        //   let availablePlaylist = state.userData.playlists.find(
+        //     (playlist) => playlist.playlistName === action.payload.playlistName
+        //   );
+
+        //   if (
+        //     availablePlaylist !== undefined &&
+        //     availablePlaylist.playlistName === action.payload.playlistName
+        //   ) {
+        //     availablePlaylist.videos.push({
+        //       videoId,
+        //       channelId,
+        //       creatorAvatar,
+        //       creatorName,
+        //       videoTitle,
+        //       videoDuration,
+        //     });
+
+        //     return state;
+        //   }
+
+        //   return {
+        //     ...state,
+        //     playlists: [
+        //       ...state.playlists,
+        //       {
+        //         playlistName,
+        //         videos: [
+        //           {
+        //             videoId,
+        //             channelId,
+        //             creatorAvatar,
+        //             creatorName,
+        //             videoTitle,
+        //             videoDuration,
+        //           },
+        //         ],
+        //       },
+        //     ],
+        //   };
+        // }
+        // return { ...state, showLoginModal: true };
       }
 
       case "LIKE_TOGGLE": {
         let videoId = action.payload.videoId;
-        let channelId = action.payload.channelId;
-        let creatorAvatar = action.payload.creatorAvatar;
-        let creatorName = action.payload.creatorName;
-        let videoTitle = action.payload.videoTitle;
-        let videoDuration = action.payload.videoDuration;
+        // let channelId = action.payload.channelId;
+        // let creatorAvatar = action.payload.creatorAvatar;
+        // let creatorName = action.payload.creatorName;
+        // let videoTitle = action.payload.videoTitle;
+        // let videoDuration = action.payload.videoDuration;
 
         console.log("============= \n Like Called \n =========");
 
@@ -162,11 +196,11 @@ export const UserProvider = ({ children }) => {
               ...state.likedVideos,
               {
                 videoId,
-                channelId,
-                creatorAvatar,
-                creatorName,
-                videoDuration,
-                videoTitle,
+                // channelId,
+                // creatorAvatar,
+                // creatorName,
+                // videoDuration,
+                // videoTitle,
               },
             ],
           };

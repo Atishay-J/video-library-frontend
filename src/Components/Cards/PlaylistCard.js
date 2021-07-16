@@ -8,7 +8,7 @@ function PlaylistCard({ playlistName, videos }) {
   const { state, dispatch } = useUser();
 
   console.log("User Data", state);
-  console.log("Videos", videos);
+  console.log("Videos", videos, playlistName);
 
   return (
     <div className="playlistCardContainer">
@@ -17,7 +17,7 @@ function PlaylistCard({ playlistName, videos }) {
           <div className="thumbnailImage">
             <img
               className="playlistThumbnail"
-              src={`https://img.youtube.com/vi/${videos[0]?.videoId}/hq720.jpg`}
+              src={`https://img.youtube.com/vi/${videos[0]}/hq720.jpg`}
               alt="Thumbnail"
             />
           </div>

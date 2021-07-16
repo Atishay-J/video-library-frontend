@@ -25,7 +25,7 @@ const LikeToggle = ({ videoId, channelId, curChannel, curVideo }) => {
   return (
     <div className="likeToggleContainer">
       <button className="likeToggleBtn" onClick={handleLike}>
-        {state.likedVideos.find((video) => video.videoId === videoId) ? (
+        {state.likedVideos?.find((video) => video.videoId === videoId) ? (
           <ThumbUpAltSharpIcon classes={{ root: "dislike" }} />
         ) : (
           <ThumbUpAltSharpIcon classes={{ root: "like" }} />

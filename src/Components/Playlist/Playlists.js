@@ -13,8 +13,8 @@ const Playlists = () => {
 
       {state.isUserLoggedIn ? (
         <div className="playlistsWrapper ">
-          {state.playlists.length > 0 ? (
-            state.playlists.map((videos) => (
+          {state.userData.playlists.length > 0 ? (
+            state.userData.playlists.map((videos) => (
               <PlaylistCard
                 playlistName={videos.playlistName}
                 videos={videos.videos}
