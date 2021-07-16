@@ -1,10 +1,10 @@
 import "../Cards/videoCard.css";
 import Skeleton from "react-loading-skeleton";
 
-const LoadingCard = ({ key }) => {
+const LoadingCard = () => {
   return (
     <div className="LoadingCardWrapper flex-cont flex-wrap space-evenly">
-      <div className="videoCardContainer" key={key}>
+      <div className="videoCardContainer">
         <div className="videoCardThumbnailContainer">
           <Skeleton height={"10rem"} />
         </div>

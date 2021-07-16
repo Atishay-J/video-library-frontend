@@ -24,7 +24,7 @@ function App() {
       <div className="routesDiv">
         <Routes>
           <Route exact path="/" element={<Videos />} />
-          <Route exact path="/navbar" element={<Navbar />} />
+          {/* <Route exact path="/navbar" element={<Navbar />} /> */}
           <Route exact path="/playlists" element={<Playlists />} />
           <Route exact path="/playlist/:playlistName" element={<Playlist />} />
           <Route exact path="/channels/:channelId" element={<ChannelPage />} />

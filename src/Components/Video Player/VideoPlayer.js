@@ -24,10 +24,6 @@ const VideoPlayer = () => {
     console.log("Added to history");
   };
 
-  //**************************************** */
-  //******* TRY TO DO THIS IN CONTEXT ******/
-  //**************************************** */
-
   const getChannelData = async () => {
     await axios
       .get(`https://metaphor-music.herokuapp.com/api/channels/${channelId}`)
@@ -49,8 +45,6 @@ const VideoPlayer = () => {
 
   return (
     <div className="videoPlayerContainer">
-      {/* <h1>Video Player</h1> */}
-
       <div className="videoPlayerFrameWrapper">
         <YouTube
           className="videoPlayer"

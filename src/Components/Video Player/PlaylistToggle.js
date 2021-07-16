@@ -1,27 +1,25 @@
-import { useUser } from "../../Context/UserContext";
-import { useVideo } from "../../Context/VideoContext";
 import PlaylistModal from "../Modals/PlaylistModal";
 
 import PlaylistAddSharpIcon from "@material-ui/icons/PlaylistAddSharp";
+import { useState } from "react";
 
 const PlaylistToggle = ({ videoId, channelId, curChannel, curVideo }) => {
-  const { state, dispatch } = useUser();
-
-  const { videoState, videoDispatch } = useVideo();
+  const [showPlaylistModal, setShowPlaylistModal] = useState(false);
 
   return (
     <div className="PlaylistToggleContainer">
-      {videoState.showPlaylistModal ? (
+      {showPlaylistModal ? (
         <PlaylistModal
           videoId={videoId}
           channelId={channelId}
           curChannel={curChannel}
           curVideo={curVideo}
+          setShowPlaylistModal={setShowPlaylistModal}
         />
       ) : (
         <button
           className="addToPlaylistBtn"
-          onClick={() => videoDispatch({ type: "SHOW_PLAYLIST_MODAL" })}
+          onClick={() => setShowPlaylistModal(true)}
         >
           <PlaylistAddSharpIcon classes={{ root: "addToPlaylist" }} />
         </button>

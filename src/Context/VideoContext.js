@@ -18,14 +18,15 @@ const videoReducer = (state, action) => {
   switch (action.type) {
     case "SHOW_PLAYLIST_MODAL":
       return { ...state, showPlaylistModal: true };
-    default:
-      return state;
 
     case "HIDE_PLAYLIST_MODAL":
       return { ...state, showPlaylistModal: false };
 
     case "SET_LOADING":
       return { ...state, isLoading: action.payload };
+
+    default:
+      return state;
   }
 };
 

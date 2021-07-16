@@ -1,19 +1,41 @@
 import { useState } from "react";
 import { useUser } from "../../Context/UserContext";
-import { useVideo } from "../../Context/VideoContext";
 
-const PlaylistModal = ({ videoId, channelId, curChannel, curVideo }) => {
-  const { videoState, videoDispatch } = useVideo();
-  const { state, dispatch } = useUser();
+const PlaylistModal = ({
+  videoId,
+  channelId,
+  curChannel,
+  curVideo,
+  setShowPlaylistModal,
+}) => {
+  const { dispatch } = useUser();
 
   const [playlistInput, setPlaylistInput] = useState("");
+
+  const addToPlaylist = () => {
+    playlistInput !== "" &&
+      dispatch({
+        type: "ADD_TO_PLAYLIST",
+        payload: {
+          videoId,
+          channelId,
+          creatorAvatar: curChannel.creatorAvatar,
+          creatorName: curChannel.creatorName,
+          videoTitle: curVideo.videoTitle,
+          videoDuration: curVideo.videoDuration,
+          playlistName: playlistInput,
+        },
+      });
+
+    setShowPlaylistModal(false);
+  };
 
   return (
     <div className="playlistModal">
       <div className="playlistModalContent">
         <span
           className="playlistModalClose"
-          onClick={() => videoDispatch({ type: "HIDE_PLAYLIST_MODAL" })}
+          onClick={() => setShowPlaylistModal(false)}
         >
           &times;
         </span>
@@ -28,21 +50,7 @@ const PlaylistModal = ({ videoId, channelId, curChannel, curVideo }) => {
             />
             <button
               className="playlistModalSubmitBtn primary submitBtn"
-              onClick={() => {
-                dispatch({
-                  type: "ADD_TO_PLAYLIST",
-                  payload: {
-                    videoId,
-                    channelId,
-                    creatorAvatar: curChannel.creatorAvatar,
-                    creatorName: curChannel.creatorName,
-                    videoTitle: curVideo.videoTitle,
-                    videoDuration: curVideo.videoDuration,
-                    playlistName: playlistInput,
-                  },
-                });
-                videoDispatch({ type: "HIDE_PLAYLIST_MODAL" });
-              }}
+              onClick={addToPlaylist}
             >
               Add
             </button>

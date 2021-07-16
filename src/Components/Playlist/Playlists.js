@@ -1,7 +1,6 @@
 import React from "react";
 
 import { useUser } from "../../Context/UserContext";
-
 import PlaylistCard from "../Cards/PlaylistCard";
 import "./playlist.css";
 

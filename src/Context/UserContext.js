@@ -1,5 +1,4 @@
 import { createContext, useContext, useReducer } from "react";
-import { useVideo } from "./VideoContext";
 
 export const UserContext = createContext();
 
@@ -15,6 +14,11 @@ export const UserProvider = ({ children }) => {
   };
 
   const userReducer = (state, action) => {
+    console.log(
+      "============= \n Dispatch Called has action \n =========",
+      action
+    );
+
     switch (action.type) {
       case "SIGN_IN":
         if (action.payload.status) {
@@ -52,6 +56,8 @@ export const UserProvider = ({ children }) => {
         let channelId = action.payload.channelId;
         let creatorAvatar = action.payload.creatorAvatar;
         let creatorName = action.payload.creatorName;
+
+        console.log("============= \n  Subscribe Called \n =========");
 
         if (state.isUserLoggedIn) {
           if (
@@ -138,6 +144,8 @@ export const UserProvider = ({ children }) => {
         let creatorName = action.payload.creatorName;
         let videoTitle = action.payload.videoTitle;
         let videoDuration = action.payload.videoDuration;
+
+        console.log("============= \n Like Called \n =========");
 
         if (state.isUserLoggedIn) {
           if (state.likedVideos.find((video) => video.videoId === videoId)) {
