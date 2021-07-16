@@ -1,6 +1,8 @@
 import "./App.css";
 
 import { Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import {
   Navbar,
@@ -21,6 +23,11 @@ function App() {
   return (
     <div className="App">
       <Navbar />
+      <ToastContainer
+        position="top-right"
+        autoClose={1500}
+        draggablePercent={60}
+      />
       <div className="routesDiv">
         <Routes>
           <Route exact path="/" element={<Videos />} />

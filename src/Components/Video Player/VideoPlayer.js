@@ -9,6 +9,7 @@ import PlaylistToggle from "./PlaylistToggle";
 import SubscribeToggle from "./SubscribeButton";
 import LikeToggle from "./LikeButton";
 import { VideoPlayerLoader } from "../index";
+import { ToastContainer } from "react-toastify";
 
 const VideoPlayer = () => {
   const { videoId, channelId } = useParams();
@@ -45,6 +46,7 @@ const VideoPlayer = () => {
 
   return (
     <div className="videoPlayerContainer">
+      {/* <ToastContainer /> */}
       <div className="videoPlayerFrameWrapper">
         <YouTube
           className="videoPlayer"

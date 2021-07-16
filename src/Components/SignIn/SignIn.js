@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useUser } from "../../Context/UserContext";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
@@ -8,13 +8,9 @@ const SignIn = () => {
   const [username, SetUserName] = useState("");
   const [password, setPassword] = useState("");
   const [displayMsg, setDisplayMsg] = useState(false);
-  const { state, dispatch } = useUser();
+  const { dispatch } = useUser();
 
   let navigate = useNavigate();
-
-  useEffect(() => {
-    state.isUserLoggedIn && navigate("/");
-  }, [state]);
 
   const signIn = async () => {
     await axios
@@ -23,8 +19,6 @@ const SignIn = () => {
         password,
       })
       .then((res) => {
-        console.log("Logged In");
-
         dispatch({
           type: "SIGN_IN",
           payload: {
@@ -32,6 +26,7 @@ const SignIn = () => {
             status: res.status,
           },
         });
+        navigate("/");
       })
       .catch((err) => {
         console.log("Sign Up error response", err);

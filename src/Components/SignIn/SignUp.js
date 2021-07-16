@@ -1,13 +1,16 @@
 import React, { useState } from "react";
-import { useUser } from "../../Context/UserContext";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import "./signin.css";
 
 const SignUp = () => {
-  const [username, SetUserName] = useState("");
-  const [password, setPassword] = useState("");
-  const [displayMsg, setDisplayMsg] = useState(false);
+  const [{ username, password }, SetUserInput] = useState({
+    username: "",
+    password: "",
+  });
+
+  const navigate = useNavigate();
 
   const signUp = async () => {
     await axios
@@ -16,26 +19,18 @@ const SignUp = () => {
         password,
       })
       .then((res) => {
-        console.log("SignUp response", res);
-        setDisplayMsg(true);
+        toast.dark("Account Created ");
+        navigate("/signin");
       })
-      .catch((err) => console.log("Sign Up error response", err));
+      .catch((err) => {
+        console.log("Sign Up error response", err);
+        toast.error("Some Error Occured");
+      });
   };
 
   return (
     <div className="signupContainer container flex-column align-center">
       <h1 className="heading-l">Signup</h1>
-
-      {displayMsg && (
-        <div className="signUpMsgContainer">
-          <h3 className="signupMsg">
-            Account succesfully created, Go to{" "}
-            <span className="signupMsgLink">
-              <Link to="/signin">Login</Link>
-            </span>
-          </h3>
-        </div>
-      )}
 
       <form
         action="#"
@@ -48,14 +43,22 @@ const SignUp = () => {
             type="text"
             placeholder="username"
             value={username}
-            onChange={(e) => SetUserName(e.target.value)}
+            onChange={(e) =>
+              SetUserInput((prev) => {
+                return { ...prev, username: e.target.value };
+              })
+            }
           />
           <input
             className="simpleText-input"
             type="password"
             placeholder="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) =>
+              SetUserInput((prev) => {
+                return { ...prev, password: e.target.value };
+              })
+            }
           />
         </div>
         <input
