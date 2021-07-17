@@ -19,10 +19,10 @@ import {
   LikedVideos,
 } from "./Components";
 import PageNotFound from "./Components/404/PageNotFound";
+import { useEffect } from "react";
 
 function App() {
   const apiData = useApiData();
-  // apiData();
 
   return (
     <div className="App">

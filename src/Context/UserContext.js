@@ -25,9 +25,6 @@ export const UserProvider = ({ children }) => {
         let userData = {
           userId: action.payload.userId,
           username: action.payload.username,
-          subscribedChannels: [...action.payload.subscribed],
-          likedVideos: [...action.payload.likedVideos],
-          playlists: [...action.payload.playlist],
         };
 
         return { userData, isUserLoggedIn: true };
@@ -52,18 +49,22 @@ export const UserProvider = ({ children }) => {
         let creatorAvatar = action.payload.creatorAvatar;
         let creatorName = action.payload.creatorName;
 
+        let ifAlreadySubscribed = state.userData.subscribedChannels.find(
+          (channel) => channel.channelId === channelId
+        );
+
         if (state.isUserLoggedIn) {
-          if (
-            state.userData.subscribedChannels &&
-            state.userData.subscribedChannels.find(
-              (channel) => channel.channelId === channelId
-            )
-          ) {
+          if (ifAlreadySubscribed) {
+            let removeSubscribed = state.userData.subscribedChannels.filter(
+              (channel) => channel.channelId !== channelId
+            );
+
             return {
               ...state,
-              subscribedChannels: state.subscribedChannels.filter(
-                (channel) => channel.channelId !== channelId
-              ),
+              userData: {
+                ...state.userData,
+                subscribedChannels: removeSubscribed,
+              },
             };
           }
           return {
@@ -71,8 +72,8 @@ export const UserProvider = ({ children }) => {
             userData: {
               ...state.userData,
               subscribedChannels: [
-                ...state.subscribedChannels,
-                { channelId, creatorName, creatorAvatar },
+                ...state.userData.subscribedChannels,
+                { channelId, creatorAvatar, creatorName },
               ],
             },
           };

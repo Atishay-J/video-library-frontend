@@ -21,7 +21,7 @@ const SubscribeToggle = ({ channelId, curChannel }) => {
   return (
     <div className="subscribeToggleContainer">
       <button className="subscribeBtn" onClick={subscribe}>
-        {state.subscribedChannels?.find(
+        {state.userData.subscribedChannels?.find(
           (channel) => channel.channelId === channelId
         )
           ? "Unsubscribe"

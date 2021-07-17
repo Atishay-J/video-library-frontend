@@ -30,9 +30,9 @@ const videoReducer = (state, action) => {
         isLoading: false,
       };
 
-    case "SET_CHANNELS":
-      console.log("Setting Channels", action.payload);
-      return { ...state, channels: [action.payload] };
+    // case "SET_CHANNELS":
+    //   console.log("Setting Channels", action.payload);
+    //   return { ...state, channels: [action.payload] };
 
     default:
       return state;

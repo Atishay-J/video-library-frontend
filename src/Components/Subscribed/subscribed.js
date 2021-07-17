@@ -13,8 +13,8 @@ const Subscribed = () => {
 
       {state.isUserLoggedIn ? (
         <div className="subscribedWrapper flex-cont space-around flex-wrap">
-          {state.subscribedChannels.length > 0 ? (
-            state.subscribedChannels.map((item) => (
+          {state.userData.subscribedChannels.length > 0 ? (
+            state.userData.subscribedChannels.map((item) => (
               <SubscribedCard
                 key={item.channelId}
                 channelAvatar={item.creatorAvatar}

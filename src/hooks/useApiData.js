@@ -7,6 +7,21 @@ const useApiData = () => {
 
   const { videoDispatch } = useVideo();
 
+  const fetchData = async () => {
+    console.log("FETtchingggg");
+    await axios
+      .get("https://metaphor-music.herokuapp.com/api/videos")
+      .then((res) => {
+        console.log("RESPONSEEE", res);
+        setApiData(res.data);
+      })
+      .catch((err) => console.log("Some erorr occured"));
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   const saveVideos = () => {
     let videos = [];
     let channels = [];
@@ -28,21 +43,6 @@ const useApiData = () => {
       saveVideos();
     }
   }, [apiData]);
-
-  const fetchData = async () => {
-    console.log("FETtchingggg");
-    await axios
-      .get("https://metaphor-music.herokuapp.com/api/videos")
-      .then((res) => {
-        console.log("RESPONSEEE", res);
-        setApiData(res.data);
-      })
-      .catch((err) => console.log("Some erorr occured"));
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   return;
 };

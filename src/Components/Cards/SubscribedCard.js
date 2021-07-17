@@ -31,7 +31,7 @@ const SubscribedCard = ({ channelAvatar, channelName, channelId }) => {
           })
         }
       >
-        {state.subscribedChannels.find(
+        {state.userData.subscribedChannels.find(
           (channel) => channel.channelId === channelId
         )
           ? "Unsubscribe"
