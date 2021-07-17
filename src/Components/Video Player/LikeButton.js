@@ -12,10 +12,6 @@ const LikeToggle = ({ videoId, channelId, curChannel, curVideo }) => {
         payload: {
           videoId,
           channelId,
-          creatorAvatar: curChannel.creatorAvatar,
-          creatorName: curChannel.creatorName,
-          videoTitle: curVideo.videoTitle,
-          videoDuration: curVideo.videoDuration,
         },
       });
     }
@@ -25,7 +21,9 @@ const LikeToggle = ({ videoId, channelId, curChannel, curVideo }) => {
   return (
     <div className="likeToggleContainer">
       <button className="likeToggleBtn" onClick={handleLike}>
-        {state.likedVideos?.find((video) => video.videoId === videoId) ? (
+        {state.userData.likedVideos?.find(
+          (video) => video.videoId === videoId
+        ) ? (
           <ThumbUpAltSharpIcon classes={{ root: "dislike" }} />
         ) : (
           <ThumbUpAltSharpIcon classes={{ root: "like" }} />

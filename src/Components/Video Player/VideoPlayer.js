@@ -79,12 +79,7 @@ const VideoPlayer = () => {
             <SubscribeToggle channelId={channelId} curChannel={curChannel} />
 
             <div className="toggleBtnWrapper">
-              <PlaylistToggle
-                videoId={videoId}
-                channelId={channelId}
-                curChannel={curChannel}
-                curVideo={curVideo}
-              />
+              <PlaylistToggle videoId={videoId} channelId={channelId} />
               <LikeToggle
                 videoId={videoId}
                 channelId={channelId}

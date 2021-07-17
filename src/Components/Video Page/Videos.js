@@ -30,7 +30,7 @@ const Videos = () => {
                 videoId={video.videoId}
                 videoTitle={video.videoTitle}
                 videoDuration={video.videoDuration}
-                channelId={channel._id} // I think we need to send channel id also from DB
+                channelId={channel._id}
                 channelName={channel.creatorName}
                 channelAvatar={channel.creatorAvatar}
               />

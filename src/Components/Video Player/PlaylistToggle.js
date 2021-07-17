@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useUser } from "../../Context/UserContext";
 import { toast } from "react-toastify";
 
-const PlaylistToggle = ({ videoId, channelId, curChannel, curVideo }) => {
+const PlaylistToggle = ({ videoId, channelId }) => {
   const [showPlaylistModal, setShowPlaylistModal] = useState(false);
 
   const { state } = useUser();
@@ -27,8 +27,6 @@ const PlaylistToggle = ({ videoId, channelId, curChannel, curVideo }) => {
         <PlaylistModal
           videoId={videoId}
           channelId={channelId}
-          curChannel={curChannel}
-          curVideo={curVideo}
           setShowPlaylistModal={setShowPlaylistModal}
         />
       ) : (

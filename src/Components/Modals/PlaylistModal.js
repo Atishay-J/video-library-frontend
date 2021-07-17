@@ -2,13 +2,7 @@ import { useState } from "react";
 import { useUser } from "../../Context/UserContext";
 import { toast } from "react-toastify";
 
-const PlaylistModal = ({
-  videoId,
-  channelId,
-  curChannel,
-  curVideo,
-  setShowPlaylistModal,
-}) => {
+const PlaylistModal = ({ videoId, channelId, setShowPlaylistModal }) => {
   const { dispatch } = useUser();
   const [playlistInput, setPlaylistInput] = useState("");
 
