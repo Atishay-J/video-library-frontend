@@ -1,11 +1,4 @@
-import React, {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  useReducer,
-} from "react";
-import axios from "axios";
+import React, { createContext, useContext, useState, useReducer } from "react";
 
 export const VideoContext = createContext();
 
@@ -29,10 +22,6 @@ const videoReducer = (state, action) => {
         channels: action.payload.channels,
         isLoading: false,
       };
-
-    // case "SET_CHANNELS":
-    //   console.log("Setting Channels", action.payload);
-    //   return { ...state, channels: [action.payload] };
 
     default:
       return state;

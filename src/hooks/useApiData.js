@@ -8,11 +8,9 @@ const useApiData = () => {
   const { videoDispatch } = useVideo();
 
   const fetchData = async () => {
-    console.log("FETtchingggg");
     await axios
       .get("https://metaphor-music.herokuapp.com/api/videos")
       .then((res) => {
-        console.log("RESPONSEEE", res);
         setApiData(res.data);
       })
       .catch((err) => console.log("Some erorr occured"));

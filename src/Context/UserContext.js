@@ -25,6 +25,9 @@ export const UserProvider = ({ children }) => {
         let userData = {
           userId: action.payload.userId,
           username: action.payload.username,
+          subscribedChannels: [],
+          likedVideos: [],
+          playlists: [],
         };
 
         return { userData, isUserLoggedIn: true };
@@ -49,7 +52,7 @@ export const UserProvider = ({ children }) => {
         let creatorAvatar = action.payload.creatorAvatar;
         let creatorName = action.payload.creatorName;
 
-        let ifAlreadySubscribed = state.userData.subscribedChannels.find(
+        let ifAlreadySubscribed = state.userData.subscribedChannels?.find(
           (channel) => channel.channelId === channelId
         );
 
