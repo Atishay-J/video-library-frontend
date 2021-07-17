@@ -7,11 +7,14 @@ const PlaylistModal = ({ videoId, channelId, setShowPlaylistModal }) => {
   const [playlistInput, setPlaylistInput] = useState("");
 
   const addToPlaylist = () => {
-    playlistInput !== "" &&
-      dispatch({
-        type: "ADD_TO_PLAYLIST",
-        payload: { videoId, playlistname: playlistInput, channelId },
-      });
+    if (playlistInput === "") {
+      return toast.dark("Playlist name can't be empty");
+    }
+
+    dispatch({
+      type: "ADD_TO_PLAYLIST",
+      payload: { videoId, playlistname: playlistInput, channelId },
+    });
 
     toast.dark(`Added to ${playlistInput}`, { position: "bottom-right" });
 

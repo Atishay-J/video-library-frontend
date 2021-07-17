@@ -9,13 +9,11 @@ const initState = {
 };
 
 const videoReducer = (state, action) => {
-  console.log("Reducer Called");
   switch (action.type) {
     case "SET_LOADING":
       return { ...state, isLoading: action.payload };
 
     case "SET_VIDEOS":
-      console.log("Setting Videos", action.payload);
       return {
         ...state,
         videos: action.payload.videos,

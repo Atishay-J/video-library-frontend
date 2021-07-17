@@ -1,15 +1,9 @@
 import "./playlistCard.css";
 import PlaylistPlaySharpIcon from "@material-ui/icons/PlaylistPlaySharp";
-import { useUser } from "../../Context/UserContext";
 
 import { Link } from "react-router-dom";
 
 function PlaylistCard({ playlistName, videos }) {
-  const { state, dispatch } = useUser();
-
-  console.log("User Data", state);
-  console.log("Videos", videos, playlistName);
-
   return (
     <div className="playlistCardContainer">
       <Link to={`/playlist/${playlistName}`}>

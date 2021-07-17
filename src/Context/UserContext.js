@@ -156,7 +156,10 @@ export const UserProvider = ({ children }) => {
             ...state,
             userData: {
               ...state.userData,
-              likedVideos: [{ videoId, channelId }],
+              likedVideos: [
+                ...state.userData.likedVideos,
+                { videoId, channelId },
+              ],
             },
           };
         }
