@@ -1,39 +1,30 @@
 import "./videoCard.css";
 import { Link } from "react-router-dom";
 import { useVideo } from "../../Context/VideoContext";
+import { useEffect, useState } from "react";
 
-const PlaylistVideoCard = ({ video }) => {
-  const { apiData, videoState } = useVideo();
+const PlaylistVideoCard = ({ videoId, channelId }) => {
+  const { videos } = useVideo();
+  const [
+    { videoTitle, creatorName, creatorAvatar, videoDuration },
+    setCurVideoData,
+  ] = useState("");
 
   const retriveCurrentVideoData = () => {
-    let allVideos = [];
+    let videoData = videos.find((video) => video.videoId === videoId);
 
-    apiData.map(
-      (creator) => (allVideos = [...allVideos, ...creator.creatorVideos])
-    );
-    console.log("ALLL VIDEOSSS", allVideos);
+    setCurVideoData(videoData);
   };
 
-  retriveCurrentVideoData();
+  useEffect(() => {
+    retriveCurrentVideoData();
+  }, [videoId, channelId]);
 
-  console.log(
-    "thingsss",
-    apiData.map((creators) =>
-      creators.creatorVideos.find((video) => video.videoId === video)
-    )
-  );
-
-  console.log("API DATA", apiData);
-
-  let thumbnailImage = `https://img.youtube.com/vi/${video}/hq720.jpg`;
-
-  console.log("VIDEO I GOT IN ", video);
+  let thumbnailImage = `https://img.youtube.com/vi/${videoId}/hq720.jpg`;
 
   return (
     <div className="videoCardContainer">
-      <h1>{video}</h1>
-
-      {/* <div className="videoCardThumbnailContainer">
+      <div className="videoCardThumbnailContainer">
         <Link to={`/watch/${channelId}/${videoId}`}>
           <img
             className="videoCardThumbnailImage"
@@ -47,7 +38,7 @@ const PlaylistVideoCard = ({ video }) => {
         <Link to={`/channels/${channelId}`}>
           <img
             className="videoCardChannelAvatar"
-            src={channelAvatar}
+            src={creatorAvatar}
             alt="Channel Avatar"
           />
         </Link>
@@ -56,10 +47,10 @@ const PlaylistVideoCard = ({ video }) => {
             <h1 className="videoCardTitle">{videoTitle}</h1>
           </Link>
           <Link to={`/channels/${channelId}`}>
-            <h3 className="videoCardChannelTitle">{channelName}</h3>
+            <h3 className="videoCardChannelTitle">{creatorName}</h3>
           </Link>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };

@@ -3,6 +3,7 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import useApiData from "./hooks/useApiData";
 
 import {
   Navbar,
@@ -20,6 +21,9 @@ import {
 import PageNotFound from "./Components/404/PageNotFound";
 
 function App() {
+  const apiData = useApiData();
+  // apiData();
+
   return (
     <div className="App">
       <Navbar />

@@ -7,6 +7,8 @@ import "./playlist.css";
 const Playlists = () => {
   const { state } = useUser();
 
+  console.log("Play list me userdata", state.userData);
+
   return (
     <div className="playlistContainer container ">
       <h1 className="heading-l text-center">Playlists</h1>
@@ -14,12 +16,15 @@ const Playlists = () => {
       {state.isUserLoggedIn ? (
         <div className="playlistsWrapper ">
           {state.userData.playlists.length > 0 ? (
-            state.userData.playlists.map((videos) => (
-              <PlaylistCard
-                playlistName={videos.playlistName}
-                videos={videos.videos}
-              />
-            ))
+            state.userData.playlists.map((playlist) => {
+              console.log("VIDEEOEEOOEEEEE", playlist);
+              return (
+                <PlaylistCard
+                  playlistName={playlist.playlistName}
+                  videos={playlist.videos}
+                />
+              );
+            })
           ) : (
             <h1 className="heading-m mt15 text-center">No Playlists</h1>
           )}

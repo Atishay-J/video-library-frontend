@@ -5,14 +5,16 @@ import { useVideo } from "../../Context/VideoContext";
 import { VideoCard, LoadingCard } from "../index";
 
 const Videos = () => {
-  const { apiData, videoState } = useVideo();
+  const { apiData, videos, isLoading, channels } = useVideo();
+
+  console.log("VIdeos in inttt", videos);
 
   return (
     <div className="videoContainer">
       {/* <h1 className="heading-l">All Videos </h1> */}
 
       <div className="videosWrapper flex-cont space-around flex-wrap">
-        {videoState.isLoading ? (
+        {isLoading ? (
           <>
             {Array(9)
               .fill()
@@ -21,19 +23,19 @@ const Videos = () => {
               ))}
           </>
         ) : (
-          apiData.map((channels) =>
-            channels.creatorVideos.map((item) => (
+          channels.map((channel) => {
+            return channel.creatorVideos.map((video) => (
               <VideoCard
-                key={item.videoId}
-                videoId={item.videoId}
-                videoTitle={item.videoTitle}
-                videoDuration={item.videoDuration}
-                channelId={channels._id}
-                channelName={channels.creatorName}
-                channelAvatar={channels.creatorAvatar}
+                key={video.videoId}
+                videoId={video.videoId}
+                videoTitle={video.videoTitle}
+                videoDuration={video.videoDuration}
+                channelId={channel._id} // I think we need to send channel id also from DB
+                channelName={channel.creatorName}
+                channelAvatar={channel.creatorAvatar}
               />
-            ))
-          )
+            ));
+          })
         )}
       </div>
     </div>

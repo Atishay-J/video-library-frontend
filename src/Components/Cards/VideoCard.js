@@ -1,5 +1,7 @@
 import "./videoCard.css";
 import { Link } from "react-router-dom";
+import { useVideo } from "../../Context/VideoContext";
+import { useEffect, useState } from "react";
 
 const VideoCard = ({
   videoId,
@@ -10,6 +12,15 @@ const VideoCard = ({
   channelAvatar,
 }) => {
   let thumbnailImage = `https://img.youtube.com/vi/${videoId}/hq720.jpg`;
+
+  console.log("data in video Card", {
+    videoId,
+    videoTitle,
+    videoDuration,
+    channelId,
+    channelName,
+    channelAvatar,
+  });
 
   return (
     <div className="videoCardContainer">

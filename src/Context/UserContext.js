@@ -88,7 +88,10 @@ export const UserProvider = ({ children }) => {
         if (isPlaylistExist) {
           let copyPlaylist = JSON.parse(JSON.stringify(isPlaylistExist));
 
-          copyPlaylist.videos.push(action.payload.videoId);
+          copyPlaylist.videos.push({
+            videoId: action.payload.videoId,
+            channelId: action.payload.channelId,
+          });
 
           let remainingPlaylists = state.userData.playlists.filter(
             ({ playlistName }) => playlistName !== action.payload.playlistname
@@ -112,7 +115,12 @@ export const UserProvider = ({ children }) => {
             playlists: [
               {
                 playlistName: action.payload.playlistname,
-                videos: [action.payload.videoId],
+                videos: [
+                  {
+                    videoId: action.payload.videoId,
+                    channelId: action.payload.channelId,
+                  },
+                ],
               },
               ...state.userData.playlists,
             ],

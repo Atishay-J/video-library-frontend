@@ -28,7 +28,10 @@ function Playlist() {
         {state.userData.playlists
           .find((playlists) => playlists.playlistName === playlistName)
           ?.videos.map((video, index) => (
-            <PlaylistVideoCard video={video} />
+            <PlaylistVideoCard
+              videoId={video.videoId}
+              channelId={video.channelId}
+            />
           ))}
 
         {/* {console.log(
