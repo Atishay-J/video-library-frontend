@@ -14,8 +14,7 @@ const SignIn = () => {
 
   const signIn = async () => {
     await axios
-      // .post("https://metaphor-music.herokuapp.com/signin"
-      .post("http://localhost:8000/signin", {
+      .post("https://metaphor-music.herokuapp.com/signin", {
         username,
         password,
       })
