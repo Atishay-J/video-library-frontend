@@ -2,7 +2,7 @@ import React from "react";
 import "./navbar.css";
 
 import { useUser } from "../../Context/UserContext";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const { state, dispatch } = useUser();
@@ -10,7 +10,7 @@ const Navbar = () => {
 
   return (
     <div className="navbarContainer">
-      <div className="navbarLogoWrapper">
+      <div className="navbarLogoWrapper" onClick={() => navigate("/")}>
         <h1 className="heading-s">Musicer</h1>
       </div>
 
