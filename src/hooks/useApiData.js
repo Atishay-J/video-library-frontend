@@ -10,6 +10,7 @@ const useApiData = () => {
   const fetchData = async () => {
     await axios
       .get("https://metaphor-music.herokuapp.com/api/videos")
+      // .get("http://localhost:8000/api/videos")
       .then((res) => {
         setApiData(res.data);
       })

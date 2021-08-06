@@ -3,6 +3,7 @@ import { useUser } from "../../Context/UserContext";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import "./signin.css";
+import { toast } from "react-toastify";
 
 const SignIn = () => {
   const [username, SetUserName] = useState("");
@@ -13,22 +14,25 @@ const SignIn = () => {
   let navigate = useNavigate();
 
   const signIn = async () => {
-    await axios
-      .post("https://metaphor-music.herokuapp.com/signin", {
-        username,
-        password,
-      })
-      .then((res) => {
-        dispatch({
-          type: "SIGN_IN",
-          payload: res.data,
+    if (username & password) {
+      return await axios
+        .post("https://metaphor-music.herokuapp.com/signin", {
+          username,
+          password,
+        })
+        .then((res) => {
+          dispatch({
+            type: "SIGN_IN",
+            payload: res.data,
+          });
+          navigate("/");
+        })
+        .catch((err) => {
+          console.log("Sign Up error response", err);
+          setDisplayMsg(true);
         });
-        navigate("/");
-      })
-      .catch((err) => {
-        console.log("Sign Up error response", err);
-        setDisplayMsg(true);
-      });
+    }
+    toast.dark("Fields can't be empty");
   };
 
   return (
