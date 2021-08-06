@@ -9,6 +9,12 @@
   color: var(--colWhite);
   margin-top: 1rem;
 }
+.inputsWrapper {
+  flex-direction: column;
+}
+.simpleText-input {
+  margin-top: 0.8rem;
+}
 .formLink {
   text-decoration: underline;
 }
@@ -23,4 +29,13 @@
 }
 .signupMsgLink {
   text-decoration: underline;
+}
+.guestSignin {
+  margin-left: 0.3rem;
+  border: none;
+  width: 5rem;
+  height: 1.5rem;
+  border: 1px solid rgb(189, 149, 149);
+  background: none;
+  cursor: pointer;
 }

@@ -8,13 +8,36 @@ import { toast } from "react-toastify";
 const SignIn = () => {
   const [username, SetUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [displayMsg, setDisplayMsg] = useState(false);
   const { dispatch } = useUser();
 
   let navigate = useNavigate();
 
+  const guestUsername = process.env.REACT_APP_GUEST_USERNAME;
+  const guestPassword = process.env.REACT_APP_GUEST_PASSWORD;
+
+  const guestLogin = async () => {
+    await axios
+      .post("https://metaphor-music.herokuapp.com/signin", {
+        username: guestUsername,
+        password: guestPassword,
+      })
+      .then((res) => {
+        dispatch({
+          type: "SIGN_IN",
+          payload: res.data,
+        });
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log("Sign Up error response", err);
+        SetUserName("");
+        setPassword("");
+        toast.dark("wrong username or password");
+      });
+  };
+
   const signIn = async () => {
-    if (username & password) {
+    if (username && password) {
       return await axios
         .post("https://metaphor-music.herokuapp.com/signin", {
           username,
@@ -29,7 +52,9 @@ const SignIn = () => {
         })
         .catch((err) => {
           console.log("Sign Up error response", err);
-          setDisplayMsg(true);
+          SetUserName("");
+          setPassword("");
+          toast.dark("wrong username or password");
         });
     }
     toast.dark("Fields can't be empty");
@@ -38,8 +63,6 @@ const SignIn = () => {
   return (
     <div className="SignInContainer container flex-column align-center">
       <h1 className="heading-l">SignIn</h1>
-
-      {displayMsg && <h3>Wrong Username or password</h3>}
 
       <form
         className="flex-column signInForm mt15"
@@ -62,12 +85,20 @@ const SignIn = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <input
-          className="primary submitBtn"
-          type="submit"
-          value="SignIn"
-          onClick={signIn}
-        />
+        <div className="buttonWrapper">
+          <input
+            className="primary submitBtn"
+            type="submit"
+            value="SignIn"
+            onClick={signIn}
+          />
+          <input
+            className="guestSignin"
+            type="submit"
+            value="Skip signin"
+            onClick={guestLogin}
+          />
+        </div>
       </form>
 
       <p className="signInPara mt10">
