@@ -13,20 +13,23 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const signUp = async () => {
-    await axios
-      .post("https://metaphor-music.herokuapp.com/signup", {
-        // .post("http://localhost:8000/signup", {
-        username,
-        password,
-      })
-      .then((res) => {
-        toast.dark("Account Created ");
-        navigate("/signin");
-      })
-      .catch((err) => {
-        console.log("Sign Up error response", err);
-        toast.error("Some Error Occured");
-      });
+    if (username && password) {
+      return await axios
+        .post("https://metaphor-music.herokuapp.com/signup", {
+          // .post("http://localhost:8000/signup", {
+          username,
+          password,
+        })
+        .then((res) => {
+          toast.dark("Account Created ");
+          navigate("/signin");
+        })
+        .catch((err) => {
+          console.log("Sign Up error response", err);
+          toast.error("Some Error Occured");
+        });
+    }
+    toast.dark("Fields can't be empty");
   };
 
   return (
