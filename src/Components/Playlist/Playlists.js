@@ -23,11 +23,15 @@ const Playlists = () => {
               );
             })
           ) : (
-            <h1 className="heading-m mt15 text-center">No Playlists</h1>
+            <h1 className="heading-m mt15 text-center playlistHeading">
+              No Playlists
+            </h1>
           )}
         </div>
       ) : (
-        <h1 className="heading-m mt15 text-center">Log In to view</h1>
+        <h1 className="heading-m mt15 text-center playlistHeading">
+          Log In to view
+        </h1>
       )}
     </div>
   );

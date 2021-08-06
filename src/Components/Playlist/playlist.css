@@ -3,7 +3,10 @@
   display: flex;
   flex-wrap: wrap;
 }
-
+.playlistHeading {
+  margin: auto;
+  margin-top: 1rem;
+}
 .playlistVideosWrapper {
   display: flex;
   flex-wrap: wrap;
