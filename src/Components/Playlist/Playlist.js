@@ -33,13 +33,6 @@ function Playlist() {
               channelId={video.channelId}
             />
           ))}
-
-        {/* {console.log(
-          "Is it ",
-          state.userData.playlists.find(
-            (playlists) => playlists.playlistName === playlistName
-          )
-        )} */}
       </div>
     </div>
   );
