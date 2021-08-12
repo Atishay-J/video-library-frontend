@@ -29,6 +29,7 @@ function Playlist() {
           .find((playlists) => playlists.playlistName === playlistName)
           ?.videos.map((video, index) => (
             <PlaylistVideoCard
+              key={video.videoId}
               videoId={video.videoId}
               channelId={video.channelId}
             />
