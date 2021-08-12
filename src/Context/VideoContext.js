@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useReducer } from "react";
+import React, { createContext, useContext, useReducer } from "react";
 
 export const VideoContext = createContext();
 
@@ -27,8 +27,6 @@ const videoReducer = (state, action) => {
 };
 
 export const VideoProvider = ({ children }) => {
-  const [apiData, setApiData] = useState([]);
-
   const [{ videos, channels, isLoading }, videoDispatch] = useReducer(
     videoReducer,
     initState
@@ -36,7 +34,7 @@ export const VideoProvider = ({ children }) => {
 
   return (
     <VideoContext.Provider
-      value={{ apiData, videos, channels, isLoading, videoDispatch }}
+      value={{ videos, channels, isLoading, videoDispatch }}
     >
       {children}
     </VideoContext.Provider>

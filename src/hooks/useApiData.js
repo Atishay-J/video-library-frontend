@@ -32,12 +32,9 @@ const useApiData = () => {
     });
 
     videoDispatch({ type: "SET_VIDEOS", payload: { videos, channels } });
-
-    // console.log("CHaneel dataa", videos, "and \n", channels);
   };
 
   useEffect(() => {
-    // console.log("API DATA CHANGED", apiData);
     if (apiData.length) {
       saveVideos();
     }
