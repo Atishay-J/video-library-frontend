@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import { useUser } from "../../Context/UserContext";
 
-import VideoCard from "../Cards/VideoCard";
 import PlaylistVideoCard from "../Cards/playlistVideoCard";
 
 const LikedVideos = () => {
