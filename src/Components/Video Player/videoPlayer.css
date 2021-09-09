@@ -1,0 +1,117 @@
+.videoPlayerContainer {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.videoPlayerFrameWrapper {
+  width: 90%;
+}
+.videoPlayer {
+  width: 100%;
+}
+.videoCardInfoContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 90%;
+}
+.videoPlayerInfoContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.videoPlayerchannelInfoCont {
+  display: flex;
+  align-items: center;
+}
+.videoPlayerAvatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50px;
+}
+.videoPlayerChannelName {
+  margin-left: 1rem;
+}
+.toggleBtnWrapper {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 0.7rem;
+}
+.signinModal {
+  position: absolute;
+  margin-top: 1.5rem;
+  right: 1rem;
+  background: rgb(250, 249, 249);
+  width: 6rem;
+  font-size: 0.8rem;
+  box-shadow: 2px 2px 18px -4px rgba(0, 0, 0, 0.199);
+  padding: 0.4rem;
+  line-height: 1.2rem;
+}
+.playlistModal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.playlistModalContent {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.playlistModalClose {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.playlistModalClose:hover,
+.playlistModalClose:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.playlistModalData {
+  display: flex;
+  justify-content: center;
+}
+
+.likeToggleBtn {
+  border: none;
+}
+.like {
+  color: var(--colDarkGray);
+}
+.dislike {
+  color: var(--colBlue);
+}
+.addToPlaylistBtn {
+  border: none;
+  color: var(--colDarkGray);
+}
+.subscribeBtn {
+  border: none;
+  /* width: 4.3rem; */
+  background: var(--colRed);
+  height: 1.4rem;
+  color: var(--colWhite);
+  font-size: 0.75rem;
+  border-radius: 20px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}

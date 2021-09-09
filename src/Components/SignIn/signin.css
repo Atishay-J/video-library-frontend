@@ -1,0 +1,41 @@
+.signInForm {
+  align-items: center;
+}
+.submitBtn {
+  border: none;
+  cursor: pointer;
+  height: 1.5rem;
+  width: 4.5rem;
+  color: var(--colWhite);
+  margin-top: 1rem;
+}
+.inputsWrapper {
+  flex-direction: column;
+}
+.simpleText-input {
+  margin-top: 0.8rem;
+}
+.formLink {
+  text-decoration: underline;
+}
+.signInPara {
+  font-size: 0.85rem;
+}
+.signUpMsgContainer {
+  margin-top: 1rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--font-black);
+}
+.signupMsgLink {
+  text-decoration: underline;
+}
+.guestSignin {
+  margin-left: 0.3rem;
+  border: none;
+  width: 5rem;
+  height: 1.5rem;
+  border: 1px solid rgb(189, 149, 149);
+  background: none;
+  cursor: pointer;
+}

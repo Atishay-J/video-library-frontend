@@ -1,0 +1,42 @@
+.playlistsWrapper {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+.playlistHeading {
+  margin: auto;
+  margin-top: 1rem;
+}
+.playlistVideosWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top: 2.5rem;
+}
+.playlistnameHeading {
+  font-size: 1.4rem;
+  margin-left: 2rem;
+  color: var(--font-gray-dark);
+  width: 80%;
+  position: relative;
+}
+.playlistnameHeading::after {
+  content: "";
+  height: 1px;
+  width: 100%;
+  background: rgb(170, 170, 170);
+  background: linear-gradient(
+    90deg,
+    rgba(221, 221, 221, 0.507) 0%,
+    rgba(216, 216, 216, 0.082) 100%
+  );
+  border-radius: 50px;
+  position: absolute;
+  top: 2.5rem;
+  bottom: 0;
+  left: 0;
+}
+.heading-m {
+  text-align: center;
+  justify-self: center;
+}

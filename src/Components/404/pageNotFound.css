@@ -1,0 +1,33 @@
+.pageNotFoundContainer {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.errorHeading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--font-gray-dark);
+}
+.errorStatusWrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.errorIcon {
+  font-size: 10rem;
+  color: rgb(226, 226, 226);
+  display: block;
+  margin: auto;
+}
+.errorStatusCode {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: rgb(199, 199, 199);
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  transform: translate(-50%, -50%);
+}
