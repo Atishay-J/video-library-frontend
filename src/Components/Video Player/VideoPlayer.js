@@ -27,7 +27,7 @@ const VideoPlayer = () => {
 
   const getChannelData = async () => {
     await axios
-      .get(`https://metaphor-music.herokuapp.com/api/channels/${channelId}`)
+      .get(`https://www.glitcheads.io/musicer/api/channels/${channelId}`)
       .then((res) => {
         SetCurChannel(res.data);
         setCurVideo(

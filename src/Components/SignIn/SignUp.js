@@ -15,7 +15,7 @@ const SignUp = () => {
   const signUp = async () => {
     if (username && password) {
       return await axios
-        .post("https://metaphor-music.herokuapp.com/signup", {
+        .post("https://www.glitcheads.io/musicer/signup", {
           // .post("http://localhost:8000/signup", {
           username,
           password,

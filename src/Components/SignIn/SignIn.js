@@ -17,7 +17,7 @@ const SignIn = () => {
 
   const guestLogin = async () => {
     await axios
-      .post("https://metaphor-music.herokuapp.com/signin", {
+      .post("https://www.glitcheads.io/musicer/signin", {
         username: guestUsername,
         password: guestPassword,
       })
@@ -39,7 +39,7 @@ const SignIn = () => {
   const signIn = async () => {
     if (username && password) {
       return await axios
-        .post("https://metaphor-music.herokuapp.com/signin", {
+        .post("https://www.glitcheads.io/musicer/signin", {
           username,
           password,
         })
